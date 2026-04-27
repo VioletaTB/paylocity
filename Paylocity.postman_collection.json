@@ -1,0 +1,1751 @@
+{
+	"info": {
+		"_postman_id": "86de1d08-3c9c-43ba-b31c-04ad36a55947",
+		"name": "Paylocity",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" alt=\"\" height=\"1530\" width=\"2162\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43597039"
+	},
+	"item": [
+		{
+			"name": "PaylocityTest",
+			"item": [
+				{
+					"name": "Add Employee",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/info",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"info"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": [
+						{
+							"name": "Violeta Torres",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Basic VGVzdFVzZXI5NDk6WDMrfS18LjVwUGUv",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"Violeta\",\n  \"lastName\": \"Torres\",\n  \"dependents\": []\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/Employees",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"Employees"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "273"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 25 Apr 2026 02:07:37 GMT"
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-69ec21e8-31c97d04621869d96179d794;Parent=0a17739d34fa7303;Sampled=0;Lineage=1:da2a2ef2:0"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "daa12e4c-ce19-4030-9e66-30bae5da2a0f"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=2592000"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "cWo8XFFZIAMEkgQ="
+								},
+								{
+									"key": "X-Cache",
+									"value": "Miss from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 8d8c4999798dd482e6976a1c0885121a.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "QRO51-P4"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "4S4i6-EXBucZOzL0Nq-0YEJAq1jj4xA79Tnd1tcONzouWadcFenV9g=="
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"partitionKey\": \"TestUser949\",\n    \"sortKey\": \"88946307-2be2-42c1-b516-04f24bcd3553\",\n    \"username\": \"TestUser949\",\n    \"id\": \"88946307-2be2-42c1-b516-04f24bcd3553\",\n    \"firstName\": \"Violeta\",\n    \"lastName\": \"Torres\",\n    \"dependants\": 0,\n    \"salary\": 52000,\n    \"gross\": 2000,\n    \"benefitsCost\": 38.46154,\n    \"net\": 1961.5385\n}"
+						},
+						{
+							"name": "Miguel Perez",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Basic VGVzdFVzZXI5NDk6WDMrfS18LjVwUGUv",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"Miguel\",\n  \"lastName\": \"Perez\",\n  \"dependents\": [4]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/Employees",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"Employees"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "271"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 25 Apr 2026 02:22:36 GMT"
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-69ec2569-4bc2b8ed772428647af4265d;Parent=579f334c50e9331f;Sampled=0;Lineage=1:da2a2ef2:0"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "f267e175-5e9b-4498-ac20-94bc25f5a1f6"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=2592000"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "cWrIhEA5oAMEU4g="
+								},
+								{
+									"key": "X-Cache",
+									"value": "Miss from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 160c20321ee44a1a3589f4da80be1b96.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "QRO51-P4"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "8g-UJyNM7dltzPrvFL5H1Ba4q9B7J5PcAVwInHQ4DP5As7Kt5tPk7w=="
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"partitionKey\": \"TestUser949\",\n    \"sortKey\": \"8cddc44e-0f88-4a85-b061-f76789522304\",\n    \"username\": \"TestUser949\",\n    \"id\": \"8cddc44e-0f88-4a85-b061-f76789522304\",\n    \"firstName\": \"Miguel\",\n    \"lastName\": \"Perez\",\n    \"dependants\": 0,\n    \"salary\": 52000,\n    \"gross\": 2000,\n    \"benefitsCost\": 38.46154,\n    \"net\": 1961.5385\n}"
+						},
+						{
+							"name": "empty",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Basic VGVzdFVzZXI5NDk6WDMrfS18LjVwUGUv",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/Employees",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"Employees"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "159"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 27 Apr 2026 19:26:54 GMT"
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-69efb87b-4ce291b23c58afe46c7ff9ed;Parent=4720fc6fcc365939;Sampled=0;Lineage=1:da2a2ef2:0"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "5a5e8aee-d598-42f2-bfda-e1173989ab7a"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=2592000"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "cfnDXF9NIAMElpw="
+								},
+								{
+									"key": "X-Cache",
+									"value": "Error from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 7df92068bae707a2fc6c31ce922c82de.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "QRO51-P4"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "qKKwkWx-0O-DYIKFxWLqVH0xbVH99-h4ckuXLmAR0rVq2qialoj6eQ=="
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"memberNames\": [\n            \"FirstName\"\n        ],\n        \"errorMessage\": \"The FirstName field is required.\"\n    },\n    {\n        \"memberNames\": [\n            \"LastName\"\n        ],\n        \"errorMessage\": \"The LastName field is required.\"\n    }\n]"
+						},
+						{
+							"name": "number",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Basic VGVzdFVzZXI5NDk6WDMrfS18LjVwUGUv",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": 67678,\n  \"lastName\": 6576,\n  \"dependents\": [4]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/Employees",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"Employees"
+									]
+								}
+							},
+							"status": "Method Not Allowed",
+							"code": 405,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 27 Apr 2026 19:29:20 GMT"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "092d34da-7053-4684-b8fd-c9a3d39cd911"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=2592000"
+								},
+								{
+									"key": "Allow",
+									"value": "GET"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "cfnalGM8oAMEdKA="
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache,no-store"
+								},
+								{
+									"key": "Expires",
+									"value": "-1"
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-69efb910-2b3944665a3856363c52ecd0;Parent=222795aa9a13edcf;Sampled=0;Lineage=1:da2a2ef2:0"
+								},
+								{
+									"key": "X-Cache",
+									"value": "Error from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 2db1be7e577e1a7e24466b4ed1c51654.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "QRO51-P4"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "_x2DX2B09Pr7up2KexHdl4yxHgLudXsARtNx5fwST3p4a5W-y-iIiw=="
+								}
+							],
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "withouttoken",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Basic VGVzdFVzZXI5NDk6WDMrfS18LjVwUGUv",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"Joel\",\n  \"lastName\": \"Macias\",\n  \"dependents\": [4]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/Employees",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"Employees"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/problem+json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "120"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 27 Apr 2026 19:31:29 GMT"
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-69efb991-47b39f577aa4f6f57fcacc97;Parent=16d8e6551273d901;Sampled=0;Lineage=1:da2a2ef2:0"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "a3f7beda-5418-4f91-a337-68578d5a3114"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=2592000"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "cfnuuEKNIAMErhQ="
+								},
+								{
+									"key": "X-Cache",
+									"value": "Error from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 fe5ca6bb755faadf4f2b71cc78a55b00.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "QRO51-P4"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "cwvMpkpT89mhZc-proF_P_GJnfSxndX7TdEJsGwYANdU2mHjPkCEXQ=="
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"type\": \"https://tools.ietf.org/html/rfc7235#section-3.1\",\n    \"title\": \"Unauthorized\",\n    \"status\": 401,\n    \"traceId\": \"0HNL4IEA7AKQK\"\n}"
+						},
+						{
+							"name": "Bug-0 dependants",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Basic VGVzdFVzZXI5NDk6WDMrfS18LjVwUGUv",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"Ana\",\n  \"lastName\": \"Lopez\",\n  \"dependents\": []\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/Employees",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"Employees"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "268"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 27 Apr 2026 19:44:12 GMT"
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-69efbc8c-56b63257275e2eb45e75c91e;Parent=5b73564022f00387;Sampled=0;Lineage=1:da2a2ef2:0"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "befeea8a-3188-431a-ba3e-27578c3d7c75"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=2592000"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "cfpl8GD0oAMEBtw="
+								},
+								{
+									"key": "X-Cache",
+									"value": "Miss from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 7e251ded49fcf5d63e50c2821a6a7cf2.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "QRO51-P4"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "YiJCCeGUwQetr_RA_OfDCd9fKZGmmEaPZ3Y9Dfj93TW-ddhuvgnocw=="
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"partitionKey\": \"TestUser949\",\n    \"sortKey\": \"982f1db8-73c0-40fa-b61b-93e5b9f3c58d\",\n    \"username\": \"TestUser949\",\n    \"id\": \"982f1db8-73c0-40fa-b61b-93e5b9f3c58d\",\n    \"firstName\": \"Ana\",\n    \"lastName\": \"Lopez\",\n    \"dependants\": 0,\n    \"salary\": 52000,\n    \"gross\": 2000,\n    \"benefitsCost\": 38.46154,\n    \"net\": 1961.5385\n}"
+						},
+						{
+							"name": "Post data Copy",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Basic VGVzdFVzZXI5NDk6WDMrfS18LjVwUGUv",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"Anahi\",\n  \"lastName\": \"Barajas\",\n  \"dependents\": [32]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/Employees",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"Employees"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "272"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 27 Apr 2026 19:44:57 GMT"
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-69efbcb9-68dcb35b2c0bb4f25890c200;Parent=68d4b4776103e2d1;Sampled=0;Lineage=1:da2a2ef2:0"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "4f930f98-217b-4036-9564-b0edb279355f"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=2592000"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "cfptFFxQIAMEM8w="
+								},
+								{
+									"key": "X-Cache",
+									"value": "Miss from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 7e251ded49fcf5d63e50c2821a6a7cf2.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "QRO51-P4"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "QiHwzNVd_sGFtB9jOkDi2Qh85WxxDdQYUFjJqkIkNXScUWINeEIqsg=="
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"partitionKey\": \"TestUser949\",\n    \"sortKey\": \"9b4cae18-fe44-485e-a318-a6b3d92398f3\",\n    \"username\": \"TestUser949\",\n    \"id\": \"9b4cae18-fe44-485e-a318-a6b3d92398f3\",\n    \"firstName\": \"Anahi\",\n    \"lastName\": \"Barajas\",\n    \"dependants\": 0,\n    \"salary\": 52000,\n    \"gross\": 2000,\n    \"benefitsCost\": 38.46154,\n    \"net\": 1961.5385\n}"
+						},
+						{
+							"name": "Post data Copy",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Basic VGVzdFVzZXI5NDk6WDMrfS18LjVwUGUv",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"Tessa\",\n  \"lastName\": \"Brooks\",\n  \"dependents\": [7]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/Employees",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"Employees"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "271"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 27 Apr 2026 19:55:04 GMT"
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-69efbf15-6d95ddfb7e8763164b810754;Parent=01cc8cf1ca278ec6;Sampled=0;Lineage=1:da2a2ef2:0"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "7c65f3b1-1075-493c-9647-820652901e27"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=2592000"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "cfrLYGcooAMEdTQ="
+								},
+								{
+									"key": "X-Cache",
+									"value": "Miss from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 7df92068bae707a2fc6c31ce922c82de.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "QRO51-P4"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "6SHDSGCbb31Vm8qwBNcUXq7liPfwqGAWcDDRq7BIopZobyZHezLB4g=="
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"partitionKey\": \"TestUser949\",\n    \"sortKey\": \"38edeca4-1aee-4826-bd57-b7b3ba2a777b\",\n    \"username\": \"TestUser949\",\n    \"id\": \"38edeca4-1aee-4826-bd57-b7b3ba2a777b\",\n    \"firstName\": \"Tessa\",\n    \"lastName\": \"Brooks\",\n    \"dependants\": 0,\n    \"salary\": 52000,\n    \"gross\": 2000,\n    \"benefitsCost\": 38.46154,\n    \"net\": 1961.5385\n}"
+						},
+						{
+							"name": "Script",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Basic VGVzdFVzZXI5NDk6WDMrfS18LjVwUGUv",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"Alia\",\n  \"lastName\": \"Bravo\",\n  \"dependents\": []\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/Employees",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"Employees"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "269"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 27 Apr 2026 20:00:15 GMT"
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-69efc04f-7931238061f9fd8f000cef3f;Parent=66dea4c74d588540;Sampled=0;Lineage=1:da2a2ef2:0"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "d63c8a26-b98f-49e5-9542-b366463e1e32"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=2592000"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "cfr8cEL3oAMESRA="
+								},
+								{
+									"key": "X-Cache",
+									"value": "Miss from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 7e251ded49fcf5d63e50c2821a6a7cf2.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "QRO51-P4"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "6yNWZAUPimGdLpUibQeMOB0OsBqwkuVJFHfFbc5Vq7wPltvhaIKR6A=="
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"partitionKey\": \"TestUser949\",\n    \"sortKey\": \"44dbb4b1-15c1-44bc-b479-583b19473f84\",\n    \"username\": \"TestUser949\",\n    \"id\": \"44dbb4b1-15c1-44bc-b479-583b19473f84\",\n    \"firstName\": \"Alia\",\n    \"lastName\": \"Bravo\",\n    \"dependants\": 0,\n    \"salary\": 52000,\n    \"gross\": 2000,\n    \"benefitsCost\": 38.46154,\n    \"net\": 1961.5385\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Employee",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/info?id=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"info"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": [
+						{
+							"name": "Get Employees",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Basic VGVzdFVzZXI5NDk6WDMrfS18LjVwUGUv",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/Employees",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"Employees"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "6923"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 25 Apr 2026 03:46:19 GMT"
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-69ec3909-606d2e1f6d29bcfc6933c78f;Parent=6484b26ca16b4107;Sampled=0;Lineage=1:da2a2ef2:0"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "2281158c-2e5d-47dc-adc9-2b42f0de703a"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=2592000"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "cW3ZhE3KIAMEgsA="
+								},
+								{
+									"key": "X-Cache",
+									"value": "Miss from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 80b09db736246df0ec4b8da0ae996986.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "QRO51-P4"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "saYrldYJ0U7KAvRIZA0793Xs-6UxndFSh4T7YoIR3UtFMDgOJzciXw=="
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"0199ce61-88b9-40e8-8209-5d77ab0b8dc3\",\n        \"username\": \"TestUser949\",\n        \"id\": \"0199ce61-88b9-40e8-8209-5d77ab0b8dc3\",\n        \"firstName\": \"Abraham\",\n        \"lastName\": \"Torres\",\n        \"dependants\": 5,\n        \"expiration\": \"2026-05-22T18:58:23+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 134.61539,\n        \"net\": 1865.3846\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"142186ee-e115-42c1-9511-07cd28d1fc97\",\n        \"username\": \"TestUser949\",\n        \"id\": \"142186ee-e115-42c1-9511-07cd28d1fc97\",\n        \"firstName\": \"AJ\",\n        \"lastName\": \"Mitchell\",\n        \"dependants\": 3,\n        \"expiration\": \"2026-05-24T15:44:09+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 96.153854,\n        \"net\": 1903.8462\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"15fc451e-87bc-456e-8205-8049bd12fa79\",\n        \"username\": \"TestUser949\",\n        \"id\": \"15fc451e-87bc-456e-8205-8049bd12fa79\",\n        \"firstName\": \"2343234\",\n        \"lastName\": \"23242\",\n        \"dependants\": 2,\n        \"expiration\": \"2026-05-24T15:44:46+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 76.92308,\n        \"net\": 1923.0769\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"18661725-ea33-4beb-ab38-f5533aaa4ba8\",\n        \"username\": \"TestUser949\",\n        \"id\": \"18661725-ea33-4beb-ab38-f5533aaa4ba8\",\n        \"firstName\": \"Steve\",\n        \"lastName\": \"Rogers\",\n        \"dependants\": 1,\n        \"expiration\": \"2026-05-22T18:08:37+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 57.69231,\n        \"net\": 1942.3077\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"1a77db51-ffe7-4cae-b6e3-c6c331186b5b\",\n        \"username\": \"TestUser949\",\n        \"id\": \"1a77db51-ffe7-4cae-b6e3-c6c331186b5b\",\n        \"firstName\": \"Barbara\",\n        \"lastName\": \"Gomez\",\n        \"dependants\": 31,\n        \"expiration\": \"2026-05-22T19:09:00+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 634.6154,\n        \"net\": 1365.3845\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"1b19ebb9-5e9b-457e-b37c-a5f9f5defa6e\",\n        \"username\": \"TestUser949\",\n        \"id\": \"1b19ebb9-5e9b-457e-b37c-a5f9f5defa6e\",\n        \"firstName\": \"Shawn\",\n        \"lastName\": \"Torres\",\n        \"dependants\": 30,\n        \"expiration\": \"2026-05-22T19:08:49+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 615.38464,\n        \"net\": 1384.6154\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"1bcdd138-1e13-4839-b84e-6f1acd478c16\",\n        \"username\": \"TestUser949\",\n        \"id\": \"1bcdd138-1e13-4839-b84e-6f1acd478c16\",\n        \"firstName\": \"Miguel\",\n        \"lastName\": \"Perez\",\n        \"dependants\": 0,\n        \"expiration\": \"2026-05-25T02:23:07+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 38.46154,\n        \"net\": 1961.5385\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"37d6d4ff-ba89-4e56-9046-506ea8441cb6\",\n        \"username\": \"TestUser949\",\n        \"id\": \"37d6d4ff-ba89-4e56-9046-506ea8441cb6\",\n        \"firstName\": \"Daniel\",\n        \"lastName\": \"Arteaga\",\n        \"dependants\": 6,\n        \"expiration\": \"2026-05-22T19:04:22+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 153.84616,\n        \"net\": 1846.1538\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"3cb825ca-8ecd-4b30-a0e2-d2ae92788da1\",\n        \"username\": \"TestUser949\",\n        \"id\": \"3cb825ca-8ecd-4b30-a0e2-d2ae92788da1\",\n        \"firstName\": \"Barbara\",\n        \"lastName\": \"Torres\",\n        \"dependants\": 1,\n        \"expiration\": \"2026-05-22T18:38:45+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 57.69231,\n        \"net\": 1942.3077\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"45d3b65a-61a1-4a61-a4ac-df465c971dbb\",\n        \"username\": \"TestUser949\",\n        \"id\": \"45d3b65a-61a1-4a61-a4ac-df465c971dbb\",\n        \"firstName\": \"Justin\",\n        \"lastName\": \"Macias\",\n        \"dependants\": 3,\n        \"expiration\": \"2026-05-22T19:05:25+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 96.153854,\n        \"net\": 1903.8462\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"4e79c9da-d538-4843-88fa-c76b58d1ec0f\",\n        \"username\": \"TestUser949\",\n        \"id\": \"4e79c9da-d538-4843-88fa-c76b58d1ec0f\",\n        \"firstName\": \"AJ\",\n        \"lastName\": \"Mitchell\",\n        \"dependants\": 3,\n        \"expiration\": \"2026-05-24T15:44:09+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 96.153854,\n        \"net\": 1903.8462\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"5a94dde5-2fd4-40bd-8a6e-8524f79440b8\",\n        \"username\": \"TestUser949\",\n        \"id\": \"5a94dde5-2fd4-40bd-8a6e-8524f79440b8\",\n        \"firstName\": \"Abraham\",\n        \"lastName\": \"Mateo\",\n        \"dependants\": 8,\n        \"expiration\": \"2026-05-22T18:56:53+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 192.30771,\n        \"net\": 1807.6923\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"5f4a70c2-42d2-4046-a867-c6a3a4e3b1d8\",\n        \"username\": \"TestUser949\",\n        \"id\": \"5f4a70c2-42d2-4046-a867-c6a3a4e3b1d8\",\n        \"firstName\": \"Alejandro5\",\n        \"lastName\": \"Alvares\",\n        \"dependants\": 5,\n        \"expiration\": \"2026-05-22T19:05:57+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 134.61539,\n        \"net\": 1865.3846\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"6038b008-45be-403b-82ea-019c4607d170\",\n        \"username\": \"TestUser949\",\n        \"id\": \"6038b008-45be-403b-82ea-019c4607d170\",\n        \"firstName\": \"43544\",\n        \"lastName\": \"435435234\",\n        \"dependants\": 2,\n        \"expiration\": \"2026-05-22T19:06:09+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 76.92308,\n        \"net\": 1923.0769\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"70b73855-330e-42c8-8d36-bd756023c8f1\",\n        \"username\": \"TestUser949\",\n        \"id\": \"70b73855-330e-42c8-8d36-bd756023c8f1\",\n        \"firstName\": \"Shawn\",\n        \"lastName\": \"Mendes\",\n        \"dependants\": 4,\n        \"expiration\": \"2026-05-22T19:03:26+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 115.38462,\n        \"net\": 1884.6154\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"88946307-2be2-42c1-b516-04f24bcd3553\",\n        \"username\": \"TestUser949\",\n        \"id\": \"88946307-2be2-42c1-b516-04f24bcd3553\",\n        \"firstName\": \"Violeta\",\n        \"lastName\": \"Torres\",\n        \"dependants\": 0,\n        \"expiration\": \"2026-05-25T02:07:37+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 38.46154,\n        \"net\": 1961.5385\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"8cddc44e-0f88-4a85-b061-f76789522304\",\n        \"username\": \"TestUser949\",\n        \"id\": \"8cddc44e-0f88-4a85-b061-f76789522304\",\n        \"firstName\": \"Miguel\",\n        \"lastName\": \"Perez\",\n        \"dependants\": 0,\n        \"expiration\": \"2026-05-25T02:22:36+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 38.46154,\n        \"net\": 1961.5385\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"ae74e273-9bf0-469e-a5bf-3aa02cff0c52\",\n        \"username\": \"TestUser949\",\n        \"id\": \"ae74e273-9bf0-469e-a5bf-3aa02cff0c52\",\n        \"firstName\": \"Barbara\",\n        \"lastName\": \"Barragan\",\n        \"dependants\": 32,\n        \"expiration\": \"2026-05-22T19:09:46+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 653.8462,\n        \"net\": 1346.1538\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"b8af01d4-703d-4cc6-b5f8-300c3a58df17\",\n        \"username\": \"TestUser949\",\n        \"id\": \"b8af01d4-703d-4cc6-b5f8-300c3a58df17\",\n        \"firstName\": \"Shawn\",\n        \"lastName\": \"Torres\",\n        \"dependants\": 11,\n        \"expiration\": \"2026-05-22T19:07:38+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 250,\n        \"net\": 1750\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"d9291507-27fb-448e-8652-d24165b20ff4\",\n        \"username\": \"TestUser949\",\n        \"id\": \"d9291507-27fb-448e-8652-d24165b20ff4\",\n        \"firstName\": \"Samantha\",\n        \"lastName\": \"Gomez\",\n        \"dependants\": 6,\n        \"expiration\": \"2026-05-22T19:03:38+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 153.84616,\n        \"net\": 1846.1538\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"df971199-e0f9-432b-beb8-641f73bc5278\",\n        \"username\": \"TestUser949\",\n        \"id\": \"df971199-e0f9-432b-beb8-641f73bc5278\",\n        \"firstName\": \"Alejandro\",\n        \"lastName\": \"Flores\",\n        \"dependants\": 2,\n        \"expiration\": \"2026-05-24T08:29:18+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 76.92308,\n        \"net\": 1923.0769\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"eead561a-7342-41a9-a6e2-d8e82e6caa23\",\n        \"username\": \"TestUser949\",\n        \"id\": \"eead561a-7342-41a9-a6e2-d8e82e6caa23\",\n        \"firstName\": \"Dylan\",\n        \"lastName\": \"O'brian\",\n        \"dependants\": 20,\n        \"expiration\": \"2026-05-22T19:08:25+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 423.07697,\n        \"net\": 1576.9231\n    }\n]"
+						},
+						{
+							"name": "By ID (Dylan O'brian)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Basic VGVzdFVzZXI5NDk6WDMrfS18LjVwUGUv",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/Employees/eead561a-7342-41a9-a6e2-d8e82e6caa23",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"Employees",
+										"eead561a-7342-41a9-a6e2-d8e82e6caa23"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "315"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 25 Apr 2026 03:50:10 GMT"
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-69ec39f2-7bf98cda7a4c8ef061a5b315;Parent=5e7aedcf051f3125;Sampled=0;Lineage=1:da2a2ef2:0"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "b6a2ea46-0a73-46ed-aaab-ecf79825fa8e"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=2592000"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "cW397EXVIAMETrw="
+								},
+								{
+									"key": "X-Cache",
+									"value": "Miss from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 2db1be7e577e1a7e24466b4ed1c51654.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "QRO51-P4"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "SL9kYWzZISRYhyIKFIX8AC53SoLQi29QsKPs0RUDlQhclKkto5Kn5Q=="
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"partitionKey\": \"TestUser949\",\n    \"sortKey\": \"eead561a-7342-41a9-a6e2-d8e82e6caa23\",\n    \"username\": \"TestUser949\",\n    \"id\": \"eead561a-7342-41a9-a6e2-d8e82e6caa23\",\n    \"firstName\": \"Dylan\",\n    \"lastName\": \"O'brian\",\n    \"dependants\": 20,\n    \"expiration\": \"2026-05-22T19:08:25+00:00\",\n    \"salary\": 52000,\n    \"gross\": 2000,\n    \"benefitsCost\": 423.07697,\n    \"net\": 1576.9231\n}"
+						},
+						{
+							"name": "Get data Copy",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Basic VGVzdFVzZXI5NDk6WDMrfS18LjVwUGUv",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/Employees/eead561a-7342-41a9-a6e2-d8e82e6caa23",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"Employees",
+										"eead561a-7342-41a9-a6e2-d8e82e6caa23"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 25 Apr 2026 03:58:42 GMT"
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-69ec3bf2-23e5e1a44436f26928553ba2;Parent=7c5f156e4b0bba0d;Sampled=0;Lineage=1:da2a2ef2:0"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "8eb163cd-4c41-4382-9744-94b5aba60c98"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=2592000"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "cW5N4H4AoAMEu0A="
+								},
+								{
+									"key": "X-Cache",
+									"value": "Miss from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 701d1e6f389486f4137609ac8d38ae44.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "QRO51-P4"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "brRx6kOaNJB3JCX546ZOi-z96vkObMG7r1E0V8JWncjOcqA9DaaKXg=="
+								}
+							],
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "All",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Basic VGVzdFVzZXI5NDk6WDMrfS18LjVwUGUv",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/Employees",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"Employees"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "6607"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 25 Apr 2026 03:59:22 GMT"
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-69ec3c1a-21c6c4683ea26aff0175b964;Parent=67df7472a3b57842;Sampled=0;Lineage=1:da2a2ef2:0"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "d865602e-c300-4a85-bee6-371045375ce1"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=2592000"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "cW5UKFyQoAMEcbQ="
+								},
+								{
+									"key": "X-Cache",
+									"value": "Miss from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 701d1e6f389486f4137609ac8d38ae44.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "QRO51-P4"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "SXlrGlynoxcn5VgiMxEvxx8hAld8EXLTaThblyqZlKQG52ZhFkbjkA=="
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"0199ce61-88b9-40e8-8209-5d77ab0b8dc3\",\n        \"username\": \"TestUser949\",\n        \"id\": \"0199ce61-88b9-40e8-8209-5d77ab0b8dc3\",\n        \"firstName\": \"Abraham\",\n        \"lastName\": \"Torres\",\n        \"dependants\": 5,\n        \"expiration\": \"2026-05-22T18:58:23+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 134.61539,\n        \"net\": 1865.3846\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"142186ee-e115-42c1-9511-07cd28d1fc97\",\n        \"username\": \"TestUser949\",\n        \"id\": \"142186ee-e115-42c1-9511-07cd28d1fc97\",\n        \"firstName\": \"AJ\",\n        \"lastName\": \"Mitchell\",\n        \"dependants\": 3,\n        \"expiration\": \"2026-05-24T15:44:09+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 96.153854,\n        \"net\": 1903.8462\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"15fc451e-87bc-456e-8205-8049bd12fa79\",\n        \"username\": \"TestUser949\",\n        \"id\": \"15fc451e-87bc-456e-8205-8049bd12fa79\",\n        \"firstName\": \"2343234\",\n        \"lastName\": \"23242\",\n        \"dependants\": 2,\n        \"expiration\": \"2026-05-24T15:44:46+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 76.92308,\n        \"net\": 1923.0769\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"18661725-ea33-4beb-ab38-f5533aaa4ba8\",\n        \"username\": \"TestUser949\",\n        \"id\": \"18661725-ea33-4beb-ab38-f5533aaa4ba8\",\n        \"firstName\": \"Steve\",\n        \"lastName\": \"Rogers\",\n        \"dependants\": 1,\n        \"expiration\": \"2026-05-22T18:08:37+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 57.69231,\n        \"net\": 1942.3077\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"1a77db51-ffe7-4cae-b6e3-c6c331186b5b\",\n        \"username\": \"TestUser949\",\n        \"id\": \"1a77db51-ffe7-4cae-b6e3-c6c331186b5b\",\n        \"firstName\": \"Barbara\",\n        \"lastName\": \"Gomez\",\n        \"dependants\": 31,\n        \"expiration\": \"2026-05-22T19:09:00+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 634.6154,\n        \"net\": 1365.3845\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"1b19ebb9-5e9b-457e-b37c-a5f9f5defa6e\",\n        \"username\": \"TestUser949\",\n        \"id\": \"1b19ebb9-5e9b-457e-b37c-a5f9f5defa6e\",\n        \"firstName\": \"Shawn\",\n        \"lastName\": \"Torres\",\n        \"dependants\": 30,\n        \"expiration\": \"2026-05-22T19:08:49+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 615.38464,\n        \"net\": 1384.6154\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"1bcdd138-1e13-4839-b84e-6f1acd478c16\",\n        \"username\": \"TestUser949\",\n        \"id\": \"1bcdd138-1e13-4839-b84e-6f1acd478c16\",\n        \"firstName\": \"Miguel\",\n        \"lastName\": \"Perez\",\n        \"dependants\": 0,\n        \"expiration\": \"2026-05-25T02:23:07+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 38.46154,\n        \"net\": 1961.5385\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"37d6d4ff-ba89-4e56-9046-506ea8441cb6\",\n        \"username\": \"TestUser949\",\n        \"id\": \"37d6d4ff-ba89-4e56-9046-506ea8441cb6\",\n        \"firstName\": \"Daniel\",\n        \"lastName\": \"Arteaga\",\n        \"dependants\": 6,\n        \"expiration\": \"2026-05-22T19:04:22+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 153.84616,\n        \"net\": 1846.1538\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"3cb825ca-8ecd-4b30-a0e2-d2ae92788da1\",\n        \"username\": \"TestUser949\",\n        \"id\": \"3cb825ca-8ecd-4b30-a0e2-d2ae92788da1\",\n        \"firstName\": \"Barbara\",\n        \"lastName\": \"Torres\",\n        \"dependants\": 1,\n        \"expiration\": \"2026-05-22T18:38:45+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 57.69231,\n        \"net\": 1942.3077\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"45d3b65a-61a1-4a61-a4ac-df465c971dbb\",\n        \"username\": \"TestUser949\",\n        \"id\": \"45d3b65a-61a1-4a61-a4ac-df465c971dbb\",\n        \"firstName\": \"Justin\",\n        \"lastName\": \"Macias\",\n        \"dependants\": 3,\n        \"expiration\": \"2026-05-22T19:05:25+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 96.153854,\n        \"net\": 1903.8462\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"4e79c9da-d538-4843-88fa-c76b58d1ec0f\",\n        \"username\": \"TestUser949\",\n        \"id\": \"4e79c9da-d538-4843-88fa-c76b58d1ec0f\",\n        \"firstName\": \"AJ\",\n        \"lastName\": \"Mitchell\",\n        \"dependants\": 3,\n        \"expiration\": \"2026-05-24T15:44:09+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 96.153854,\n        \"net\": 1903.8462\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"5a94dde5-2fd4-40bd-8a6e-8524f79440b8\",\n        \"username\": \"TestUser949\",\n        \"id\": \"5a94dde5-2fd4-40bd-8a6e-8524f79440b8\",\n        \"firstName\": \"Abraham\",\n        \"lastName\": \"Mateo\",\n        \"dependants\": 8,\n        \"expiration\": \"2026-05-22T18:56:53+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 192.30771,\n        \"net\": 1807.6923\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"5f4a70c2-42d2-4046-a867-c6a3a4e3b1d8\",\n        \"username\": \"TestUser949\",\n        \"id\": \"5f4a70c2-42d2-4046-a867-c6a3a4e3b1d8\",\n        \"firstName\": \"Alejandro5\",\n        \"lastName\": \"Alvares\",\n        \"dependants\": 5,\n        \"expiration\": \"2026-05-22T19:05:57+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 134.61539,\n        \"net\": 1865.3846\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"6038b008-45be-403b-82ea-019c4607d170\",\n        \"username\": \"TestUser949\",\n        \"id\": \"6038b008-45be-403b-82ea-019c4607d170\",\n        \"firstName\": \"43544\",\n        \"lastName\": \"435435234\",\n        \"dependants\": 2,\n        \"expiration\": \"2026-05-22T19:06:09+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 76.92308,\n        \"net\": 1923.0769\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"70b73855-330e-42c8-8d36-bd756023c8f1\",\n        \"username\": \"TestUser949\",\n        \"id\": \"70b73855-330e-42c8-8d36-bd756023c8f1\",\n        \"firstName\": \"Shawn\",\n        \"lastName\": \"Mendes\",\n        \"dependants\": 4,\n        \"expiration\": \"2026-05-22T19:03:26+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 115.38462,\n        \"net\": 1884.6154\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"88946307-2be2-42c1-b516-04f24bcd3553\",\n        \"username\": \"TestUser949\",\n        \"id\": \"88946307-2be2-42c1-b516-04f24bcd3553\",\n        \"firstName\": \"Violeta\",\n        \"lastName\": \"Torres\",\n        \"dependants\": 0,\n        \"expiration\": \"2026-05-25T02:07:37+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 38.46154,\n        \"net\": 1961.5385\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"8cddc44e-0f88-4a85-b061-f76789522304\",\n        \"username\": \"TestUser949\",\n        \"id\": \"8cddc44e-0f88-4a85-b061-f76789522304\",\n        \"firstName\": \"Miguel\",\n        \"lastName\": \"Perez\",\n        \"dependants\": 0,\n        \"expiration\": \"2026-05-25T02:22:36+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 38.46154,\n        \"net\": 1961.5385\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"ae74e273-9bf0-469e-a5bf-3aa02cff0c52\",\n        \"username\": \"TestUser949\",\n        \"id\": \"ae74e273-9bf0-469e-a5bf-3aa02cff0c52\",\n        \"firstName\": \"Barbara\",\n        \"lastName\": \"Barragan\",\n        \"dependants\": 32,\n        \"expiration\": \"2026-05-22T19:09:46+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 653.8462,\n        \"net\": 1346.1538\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"b8af01d4-703d-4cc6-b5f8-300c3a58df17\",\n        \"username\": \"TestUser949\",\n        \"id\": \"b8af01d4-703d-4cc6-b5f8-300c3a58df17\",\n        \"firstName\": \"Shawn\",\n        \"lastName\": \"Torres\",\n        \"dependants\": 11,\n        \"expiration\": \"2026-05-22T19:07:38+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 250,\n        \"net\": 1750\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"d9291507-27fb-448e-8652-d24165b20ff4\",\n        \"username\": \"TestUser949\",\n        \"id\": \"d9291507-27fb-448e-8652-d24165b20ff4\",\n        \"firstName\": \"Samantha\",\n        \"lastName\": \"Gomez\",\n        \"dependants\": 6,\n        \"expiration\": \"2026-05-22T19:03:38+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 153.84616,\n        \"net\": 1846.1538\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"df971199-e0f9-432b-beb8-641f73bc5278\",\n        \"username\": \"TestUser949\",\n        \"id\": \"df971199-e0f9-432b-beb8-641f73bc5278\",\n        \"firstName\": \"Alejandro\",\n        \"lastName\": \"Flores\",\n        \"dependants\": 2,\n        \"expiration\": \"2026-05-24T08:29:18+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 76.92308,\n        \"net\": 1923.0769\n    }\n]"
+						},
+						{
+							"name": "Get data Copy",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Basic VGVzdFVzZXI5NDk6WDMrfS18LjVwUGUv",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/Employees",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"Employees"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "9093"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 27 Apr 2026 20:00:32 GMT"
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-69efc060-7a6a29aa1fd123a04ac5818a;Parent=68e7cdd08e8c6b03;Sampled=0;Lineage=1:da2a2ef2:0"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "65bd1969-7a4b-4d71-9653-123b2d51bb21"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=2592000"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "cfr_HF-hIAMEGLA="
+								},
+								{
+									"key": "X-Cache",
+									"value": "Miss from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 7e251ded49fcf5d63e50c2821a6a7cf2.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "QRO51-P4"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "P2MqNs7sqBIlPQ756VdIxZ9y8PjwRGwLPobfE0ZCbrYilO4cslGJMA=="
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"0199ce61-88b9-40e8-8209-5d77ab0b8dc3\",\n        \"username\": \"TestUser949\",\n        \"id\": \"0199ce61-88b9-40e8-8209-5d77ab0b8dc3\",\n        \"firstName\": \"Ramon\",\n        \"lastName\": \"Torres\",\n        \"dependants\": 5,\n        \"expiration\": \"2026-05-25T04:58:33+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 134.61539,\n        \"net\": 1865.3846\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"09f682b1-5cc2-48ad-8f23-6f8faf9b7d51\",\n        \"username\": \"TestUser949\",\n        \"id\": \"09f682b1-5cc2-48ad-8f23-6f8faf9b7d51\",\n        \"firstName\": \"Ana\",\n        \"lastName\": \"Lopez\",\n        \"dependants\": 0,\n        \"expiration\": \"2026-05-27T19:44:25+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 38.46154,\n        \"net\": 1961.5385\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"142186ee-e115-42c1-9511-07cd28d1fc97\",\n        \"username\": \"TestUser949\",\n        \"id\": \"142186ee-e115-42c1-9511-07cd28d1fc97\",\n        \"firstName\": \"AJ\",\n        \"lastName\": \"Mitchell\",\n        \"dependants\": 3,\n        \"expiration\": \"2026-05-24T15:44:09+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 96.153854,\n        \"net\": 1903.8462\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"15fc451e-87bc-456e-8205-8049bd12fa79\",\n        \"username\": \"TestUser949\",\n        \"id\": \"15fc451e-87bc-456e-8205-8049bd12fa79\",\n        \"firstName\": \"2343234\",\n        \"lastName\": \"23242\",\n        \"dependants\": 2,\n        \"expiration\": \"2026-05-24T15:44:46+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 76.92308,\n        \"net\": 1923.0769\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"18661725-ea33-4beb-ab38-f5533aaa4ba8\",\n        \"username\": \"TestUser949\",\n        \"id\": \"18661725-ea33-4beb-ab38-f5533aaa4ba8\",\n        \"firstName\": \"Steve\",\n        \"lastName\": \"Rogers\",\n        \"dependants\": 1,\n        \"expiration\": \"2026-05-22T18:08:37+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 57.69231,\n        \"net\": 1942.3077\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"1a77db51-ffe7-4cae-b6e3-c6c331186b5b\",\n        \"username\": \"TestUser949\",\n        \"id\": \"1a77db51-ffe7-4cae-b6e3-c6c331186b5b\",\n        \"firstName\": \"Barbara\",\n        \"lastName\": \"Gomez\",\n        \"dependants\": 31,\n        \"expiration\": \"2026-05-22T19:09:00+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 634.6154,\n        \"net\": 1365.3845\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"1b19ebb9-5e9b-457e-b37c-a5f9f5defa6e\",\n        \"username\": \"TestUser949\",\n        \"id\": \"1b19ebb9-5e9b-457e-b37c-a5f9f5defa6e\",\n        \"firstName\": \"Shawn\",\n        \"lastName\": \"Torres\",\n        \"dependants\": 30,\n        \"expiration\": \"2026-05-22T19:08:49+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 615.38464,\n        \"net\": 1384.6154\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"1bcdd138-1e13-4839-b84e-6f1acd478c16\",\n        \"username\": \"TestUser949\",\n        \"id\": \"1bcdd138-1e13-4839-b84e-6f1acd478c16\",\n        \"firstName\": \"Miguel\",\n        \"lastName\": \"Perez\",\n        \"dependants\": 0,\n        \"expiration\": \"2026-05-25T02:23:07+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 38.46154,\n        \"net\": 1961.5385\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"2eb3c10e-d2ff-4bbf-87f8-32b2dd625e46\",\n        \"username\": \"TestUser949\",\n        \"id\": \"2eb3c10e-d2ff-4bbf-87f8-32b2dd625e46\",\n        \"firstName\": \"Ana\",\n        \"lastName\": \"Lopez\",\n        \"dependants\": 0,\n        \"expiration\": \"2026-05-27T19:44:33+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 38.46154,\n        \"net\": 1961.5385\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"354d813b-c75f-4dc1-8aa1-d825381d1abe\",\n        \"username\": \"TestUser949\",\n        \"id\": \"354d813b-c75f-4dc1-8aa1-d825381d1abe\",\n        \"firstName\": \"Joel\",\n        \"lastName\": \"Macias\",\n        \"dependants\": 0,\n        \"expiration\": \"2026-05-27T19:33:03+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 38.46154,\n        \"net\": 1961.5385\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"35c2bf22-1b02-45f9-a934-b1ca5e7e23e4\",\n        \"username\": \"TestUser949\",\n        \"id\": \"35c2bf22-1b02-45f9-a934-b1ca5e7e23e4\",\n        \"firstName\": \"Tessa\",\n        \"lastName\": \"Brooks\",\n        \"dependants\": 0,\n        \"expiration\": \"2026-05-27T19:45:57+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 38.46154,\n        \"net\": 1961.5385\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"37d6d4ff-ba89-4e56-9046-506ea8441cb6\",\n        \"username\": \"TestUser949\",\n        \"id\": \"37d6d4ff-ba89-4e56-9046-506ea8441cb6\",\n        \"firstName\": \"Daniel\",\n        \"lastName\": \"Arteaga\",\n        \"dependants\": 6,\n        \"expiration\": \"2026-05-22T19:04:22+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 153.84616,\n        \"net\": 1846.1538\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"38edeca4-1aee-4826-bd57-b7b3ba2a777b\",\n        \"username\": \"TestUser949\",\n        \"id\": \"38edeca4-1aee-4826-bd57-b7b3ba2a777b\",\n        \"firstName\": \"Tessa\",\n        \"lastName\": \"Brooks\",\n        \"dependants\": 0,\n        \"expiration\": \"2026-05-27T19:55:04+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 38.46154,\n        \"net\": 1961.5385\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"3cb825ca-8ecd-4b30-a0e2-d2ae92788da1\",\n        \"username\": \"TestUser949\",\n        \"id\": \"3cb825ca-8ecd-4b30-a0e2-d2ae92788da1\",\n        \"firstName\": \"Barbara\",\n        \"lastName\": \"Torres\",\n        \"dependants\": 1,\n        \"expiration\": \"2026-05-22T18:38:45+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 57.69231,\n        \"net\": 1942.3077\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"44dbb4b1-15c1-44bc-b479-583b19473f84\",\n        \"username\": \"TestUser949\",\n        \"id\": \"44dbb4b1-15c1-44bc-b479-583b19473f84\",\n        \"firstName\": \"Alia\",\n        \"lastName\": \"Bravo\",\n        \"dependants\": 0,\n        \"expiration\": \"2026-05-27T20:00:15+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 38.46154,\n        \"net\": 1961.5385\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"45d3b65a-61a1-4a61-a4ac-df465c971dbb\",\n        \"username\": \"TestUser949\",\n        \"id\": \"45d3b65a-61a1-4a61-a4ac-df465c971dbb\",\n        \"firstName\": \"Justin\",\n        \"lastName\": \"Macias\",\n        \"dependants\": 3,\n        \"expiration\": \"2026-05-22T19:05:25+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 96.153854,\n        \"net\": 1903.8462\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"4e79c9da-d538-4843-88fa-c76b58d1ec0f\",\n        \"username\": \"TestUser949\",\n        \"id\": \"4e79c9da-d538-4843-88fa-c76b58d1ec0f\",\n        \"firstName\": \"AJ\",\n        \"lastName\": \"Mitchell\",\n        \"dependants\": 3,\n        \"expiration\": \"2026-05-24T15:44:09+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 96.153854,\n        \"net\": 1903.8462\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"5a94dde5-2fd4-40bd-8a6e-8524f79440b8\",\n        \"username\": \"TestUser949\",\n        \"id\": \"5a94dde5-2fd4-40bd-8a6e-8524f79440b8\",\n        \"firstName\": \"Abraham\",\n        \"lastName\": \"Mateo\",\n        \"dependants\": 8,\n        \"expiration\": \"2026-05-22T18:56:53+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 192.30771,\n        \"net\": 1807.6923\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"5f4a70c2-42d2-4046-a867-c6a3a4e3b1d8\",\n        \"username\": \"TestUser949\",\n        \"id\": \"5f4a70c2-42d2-4046-a867-c6a3a4e3b1d8\",\n        \"firstName\": \"Alejandro5\",\n        \"lastName\": \"Alvares\",\n        \"dependants\": 5,\n        \"expiration\": \"2026-05-22T19:05:57+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 134.61539,\n        \"net\": 1865.3846\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"6038b008-45be-403b-82ea-019c4607d170\",\n        \"username\": \"TestUser949\",\n        \"id\": \"6038b008-45be-403b-82ea-019c4607d170\",\n        \"firstName\": \"43544\",\n        \"lastName\": \"435435234\",\n        \"dependants\": 2,\n        \"expiration\": \"2026-05-22T19:06:09+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 76.92308,\n        \"net\": 1923.0769\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"70b73855-330e-42c8-8d36-bd756023c8f1\",\n        \"username\": \"TestUser949\",\n        \"id\": \"70b73855-330e-42c8-8d36-bd756023c8f1\",\n        \"firstName\": \"Shawn\",\n        \"lastName\": \"Mendes\",\n        \"dependants\": 4,\n        \"expiration\": \"2026-05-22T19:03:26+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 115.38462,\n        \"net\": 1884.6154\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"7564bb8e-bbf1-48d0-be39-af7e4f7f7836\",\n        \"username\": \"TestUser949\",\n        \"id\": \"7564bb8e-bbf1-48d0-be39-af7e4f7f7836\",\n        \"firstName\": \"Tessa\",\n        \"lastName\": \"Brooks\",\n        \"dependants\": 0,\n        \"expiration\": \"2026-05-27T19:57:37+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 38.46154,\n        \"net\": 1961.5385\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"88946307-2be2-42c1-b516-04f24bcd3553\",\n        \"username\": \"TestUser949\",\n        \"id\": \"88946307-2be2-42c1-b516-04f24bcd3553\",\n        \"firstName\": \"Violeta\",\n        \"lastName\": \"Torres\",\n        \"dependants\": 0,\n        \"expiration\": \"2026-05-25T02:07:37+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 38.46154,\n        \"net\": 1961.5385\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"8cddc44e-0f88-4a85-b061-f76789522304\",\n        \"username\": \"TestUser949\",\n        \"id\": \"8cddc44e-0f88-4a85-b061-f76789522304\",\n        \"firstName\": \"Miguel\",\n        \"lastName\": \"Perez\",\n        \"dependants\": 0,\n        \"expiration\": \"2026-05-25T02:22:36+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 38.46154,\n        \"net\": 1961.5385\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"982f1db8-73c0-40fa-b61b-93e5b9f3c58d\",\n        \"username\": \"TestUser949\",\n        \"id\": \"982f1db8-73c0-40fa-b61b-93e5b9f3c58d\",\n        \"firstName\": \"Ana\",\n        \"lastName\": \"Lopez\",\n        \"dependants\": 0,\n        \"expiration\": \"2026-05-27T19:44:12+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 38.46154,\n        \"net\": 1961.5385\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"9b4cae18-fe44-485e-a318-a6b3d92398f3\",\n        \"username\": \"TestUser949\",\n        \"id\": \"9b4cae18-fe44-485e-a318-a6b3d92398f3\",\n        \"firstName\": \"Anahi\",\n        \"lastName\": \"Barajas\",\n        \"dependants\": 0,\n        \"expiration\": \"2026-05-27T19:44:58+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 38.46154,\n        \"net\": 1961.5385\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"b8af01d4-703d-4cc6-b5f8-300c3a58df17\",\n        \"username\": \"TestUser949\",\n        \"id\": \"b8af01d4-703d-4cc6-b5f8-300c3a58df17\",\n        \"firstName\": \"Shawn\",\n        \"lastName\": \"Torres\",\n        \"dependants\": 11,\n        \"expiration\": \"2026-05-22T19:07:38+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 250,\n        \"net\": 1750\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"d9291507-27fb-448e-8652-d24165b20ff4\",\n        \"username\": \"TestUser949\",\n        \"id\": \"d9291507-27fb-448e-8652-d24165b20ff4\",\n        \"firstName\": \"Samantha\",\n        \"lastName\": \"Gomez\",\n        \"dependants\": 6,\n        \"expiration\": \"2026-05-22T19:03:38+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 153.84616,\n        \"net\": 1846.1538\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"df971199-e0f9-432b-beb8-641f73bc5278\",\n        \"username\": \"TestUser949\",\n        \"id\": \"df971199-e0f9-432b-beb8-641f73bc5278\",\n        \"firstName\": \"Alejandro\",\n        \"lastName\": \"Flores\",\n        \"dependants\": 2,\n        \"expiration\": \"2026-05-24T08:29:18+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 76.92308,\n        \"net\": 1923.0769\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Update Employee",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/info?id=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"info"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": [
+						{
+							"name": "Update Employee",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Basic VGVzdFVzZXI5NDk6WDMrfS18LjVwUGUv",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"0199ce61-88b9-40e8-8209-5d77ab0b8dc3\",\n  \"username\": \"TestUser949\",\n  \"firstName\": \"Ramon\",\n  \"lastName\": \"Torres\",\n  \"dependants\": 5,\n  \"salary\": 52000\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/Employees",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"Employees"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "272"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 25 Apr 2026 04:58:33 GMT"
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-69ec49f8-78d656ca0c7c231f4f1cf74c;Parent=29336cb03e4b2d31;Sampled=0;Lineage=1:da2a2ef2:0"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "056a6dcb-ce46-4ba6-b302-02fe194d1e6f"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=2592000"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "cXB-9ERWIAMEVBA="
+								},
+								{
+									"key": "X-Cache",
+									"value": "Miss from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 a87a91201d050c6d96bd5da620bc28b0.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "QRO51-P4"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "aTGOUrIPEdVq9LFu8_WdyqbGnZhmMHAfH-PI-dNaIJB_Usnox7nnXw=="
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"partitionKey\": \"TestUser949\",\n    \"sortKey\": \"0199ce61-88b9-40e8-8209-5d77ab0b8dc3\",\n    \"username\": \"TestUser949\",\n    \"id\": \"0199ce61-88b9-40e8-8209-5d77ab0b8dc3\",\n    \"firstName\": \"Ramon\",\n    \"lastName\": \"Torres\",\n    \"dependants\": 5,\n    \"salary\": 52000,\n    \"gross\": 2000,\n    \"benefitsCost\": 134.61539,\n    \"net\": 1865.3846\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Employee",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/info?id=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"info"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": [
+						{
+							"name": "Delete Employee",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Basic VGVzdFVzZXI5NDk6WDMrfS18LjVwUGUv",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/Employees/eead561a-7342-41a9-a6e2-d8e82e6caa23",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"Employees",
+										"eead561a-7342-41a9-a6e2-d8e82e6caa23"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 25 Apr 2026 03:57:58 GMT"
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-69ec3bc6-76d52e1e303684063eff47da;Parent=18a943c3925acaf4;Sampled=0;Lineage=1:da2a2ef2:0"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "1b4baad4-322a-4a12-976b-3ff21d365c54"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=2592000"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "cW5HDGIIoAMEuaw="
+								},
+								{
+									"key": "X-Cache",
+									"value": "Miss from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 701d1e6f389486f4137609ac8d38ae44.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "QRO51-P4"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "6WaVDG6yxb_aDTZWbUDriBiQfT6n9eStj3AdhXG3MVR5q-I9FnGimw=="
+								}
+							],
+							"cookie": [],
+							"body": null
+						},
+						{
+							"name": "Delete Employee",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Basic VGVzdFVzZXI5NDk6WDMrfS18LjVwUGUv",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/api/Employees/ae74e273-9bf0-469e-a5bf-3aa02cff0c52",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"Employees",
+										"ae74e273-9bf0-469e-a5bf-3aa02cff0c52"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 27 Apr 2026 19:34:21 GMT"
+								},
+								{
+									"key": "X-Amzn-Trace-Id",
+									"value": "Root=1-69efba3c-6d34eaec65f8e95d7ed351d6;Parent=2a74c92508745521;Sampled=0;Lineage=1:da2a2ef2:0"
+								},
+								{
+									"key": "x-amzn-RequestId",
+									"value": "5cc5ec13-bed3-464c-86fa-439d680ce58e"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=2592000"
+								},
+								{
+									"key": "x-amz-apigw-id",
+									"value": "cfoJkE4zIAMEC4w="
+								},
+								{
+									"key": "X-Cache",
+									"value": "Miss from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 c6917f53ba4d770a0c2f674b28a0a830.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Pop",
+									"value": "QRO51-P4"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "qlwg0_z6S0mgvyGdXvDYWXQCYNPZX8ha4HdQbq2Fcxrx7YOB5U8I9g=="
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://template.postman-echo.com"
+		},
+		{
+			"key": "employeeId",
+			"value": ""
+		}
+	]
+}
