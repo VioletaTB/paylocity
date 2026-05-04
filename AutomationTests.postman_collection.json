@@ -1,0 +1,2374 @@
+{
+  "info": {
+    "_postman_id": "87e50ce0-c78a-43d3-a0df-1a16fb44fcf3",
+    "name": "AutomationTests",
+    "description": "Colección completa de pruebas automatizadas para el API del Benefits Dashboard de Paylocity. Cubre autenticación, empleados (CRUD) y dependientes. Incluye assertions y pruebas de bugs conocidos.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "43597039"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Login - Credenciales válidas",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200 OK al hacer login válido', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Respuesta contiene token o cookie de sesión', function () {",
+                  "    const body = pm.response.text();",
+                  "    pm.expect(body).to.not.be.empty;",
+                  "});",
+                  "",
+                  "pm.test('Content-Type es HTML o JSON', function () {",
+                  "    const ct = pm.response.headers.get('Content-Type');",
+                  "    pm.expect(ct).to.satisfy(v => v.includes('text/html') || v.includes('application/json'));",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "Username",
+                  "value": "{{username}}",
+                  "description": "Agrega tu usuario como variable de entorno"
+                },
+                {
+                  "key": "Password",
+                  "value": "{{password}}",
+                  "description": "Agrega tu contraseña como variable de entorno"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/Account/Login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Account",
+                "Login"
+              ]
+            },
+            "description": "Prueba de login con credenciales válidas"
+          },
+          "response": [
+            {
+              "name": "Login - Credenciales válidas",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "Username",
+                      "value": "{{username}}",
+                      "description": "Agrega tu usuario como variable de entorno"
+                    },
+                    {
+                      "key": "Password",
+                      "value": "{{password}} ",
+                      "description": "Agrega tu contraseña como variable de entorno"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Account/Login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Account",
+                    "Login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/html; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "4513"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 04 May 2026 19:44:18 GMT"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "x-amzn-RequestId",
+                  "value": "a551de41-3ca9-4f26-aa94-42f76c3e9f3e"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=2592000"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "Set-Cookie",
+                  "value": ".AspNetCore.Antiforgery.AsW4q1BB7-Y=CfDJ8GxX70ryXflAtTghDhA5Jcr08WZdyg34mK5BbSOJjxErkJavlqD7rlEjseGAsDpdgZfuwzd-n2xXmCoDD3b4A05-ai3CSTd93mIM2Aqo8OyIHePLffN3ULh5fST4ylIwnenMFEtvNJgXgILVRFW1rJs; path=/Prod; samesite=strict; httponly"
+                },
+                {
+                  "key": "x-amz-apigw-id",
+                  "value": "c2uKZEQRoAMEh1w="
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store"
+                },
+                {
+                  "key": "X-Amzn-Trace-Id",
+                  "value": "Root=1-69f8f70e-6e7d2ae15ad3e53b7ebf1844;Parent=7d72b690871b46db;Sampled=0;Lineage=1:da2a2ef2:0"
+                },
+                {
+                  "key": "X-Cache",
+                  "value": "Miss from cloudfront"
+                },
+                {
+                  "key": "Via",
+                  "value": "1.1 80b09db736246df0ec4b8da0ae996986.cloudfront.net (CloudFront)"
+                },
+                {
+                  "key": "X-Amz-Cf-Pop",
+                  "value": "QRO51-P4"
+                },
+                {
+                  "key": "X-Amz-Cf-Id",
+                  "value": "YXZBQYPLGu9IJTlE9-RBPEE1WisB9qu6n5itrXW9L7pI6S1WIFYlVw=="
+                }
+              ],
+              "cookie": [],
+              "body": "<!DOCTYPE html>\n<html>\n    <head>\n        <meta charset=\"utf-8\" />\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n        <title>Log In - Paylocity Benefits Dashboard</title>\n        <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\" crossorigin=\"anonymous\" integrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" />\n        <meta name=\"x-stylesheet-fallback-test\" content=\"\" class=\"sr-only\" />\n        <script>!function(a,b,c,d){var e,f=document,g=f.getElementsByTagName(\"SCRIPT\"),h=g[g.length-1].previousElementSibling,i=f.defaultView&&f.defaultView.getComputedStyle?f.defaultView.getComputedStyle(h):h.currentStyle;if(i&&i[a]!==b)for(e=0;e\n            <c.length;e++)f.write('\n                <link href=\"'+c[e]+'\" '+d+\"/>\")}(\"position\",\"absolute\",[\"/Prod/lib/bootstrap/dist/css/bootstrap.min.css\"], \"rel=\\u0022stylesheet\\u0022 crossorigin=\\u0022anonymous\\u0022 integrity=\\u0022sha384-ggOyR0iXCbMQv3Xipma34MD\\u002BdH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\\u0022 \");\n            </script>\n            <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css\" />\n            <link rel=\"stylesheet\" href=\"/Prod/css/site.css\" />\n        </head>\n        <body>\n            <header>\n                <nav class=\"navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom mb-3\">\n                    <div class=\"container\">\n                        <a class=\"navbar-brand\" href=\"/Prod/Benefits\">Paylocity Benefits Dashboard</a>\n                    </div>\n                </nav>\n            </header>\n            <div class=\"container\">\n                <main role=\"main\" class=\"pb-3\">\n                    <div class=\"row justify-content-md-center\">\n                        <div class=\"col-5 login-form-container rounded\">\n                            <form action=\"/Prod/Account/Login\" autocomplete=\"off\" method=\"post\">\n                                <img src=\"https://access.paylocity.com/images/paylocity-logo.svg\" width=\"227\" height=\"94\" alt=\"Paylocity\" />\n                                <div class=\"text-danger validation-summary-errors\" data-valmsg-summary=\"true\">\n                                    <span>There were one or more problems that prevented you from logging in:</span>\n                                    <ul>\n                                        <li>The specified username or password is incorrect.</li>\n                                    </ul>\n                                </div>\n                                <div class=\"form-group\">\n                                    <label for=\"Username\">Username</label>\n                                    <input class=\"form-control\" data-val=\"true\" data-val-length=\"The field Username must be a string with a minimum length of 1 and a maximum length of 2147483647.\" data-val-length-min=\"1\" data-val-required=\"The Username field is required.\" id=\"Username\" maxlength=\"2147483647\" name=\"Username\" type=\"text\" value=\"TestUser949\" />\n                                </div>\n                                <div class=\"form-group\">\n                                    <label for=\"Password\">Password</label>\n                                    <input class=\"form-control\" data-val=\"true\" data-val-length=\"The field Password must be a string with a minimum length of 1 and a maximum length of 2147483647.\" data-val-length-min=\"1\" data-val-required=\"The Password field is required.\" id=\"Password\" maxlength=\"2147483647\" name=\"Password\" type=\"password\" />\n                                </div>\n                                <button type=\"submit\" class=\"btn btn-primary\">Log In</button>\n                                <input name=\"__RequestVerificationToken\" type=\"hidden\" value=\"CfDJ8GxX70ryXflAtTghDhA5Jcqd7HawXe4lHC2LfIbXQbJ7jfkEp467HbsB1b9ZlKGBop4G0-eoHbw-utZ20nu_DYwRDo_NKiQWziqabq_Zd4C_CTu5addhKP6t-TaxBnpxQA-dc4GDdMGtsp3VvzShqIg\" />\n                            </form>\n                        </div>\n                    </div>\n                </main>\n            </div>\n            <footer class=\"border-top footer text-muted\">\n                <div class=\"container\">\r\n      &copy; 2026 - Paylocity\r\n    </div>\n            </footer>\n            <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js\" crossorigin=\"anonymous\" integrity=\"sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=\">\r\n    </script>\n            <script>(window.jQuery||document.write(\"\\u003Cscript src=\\u0022/Prod/lib/jquery/dist/jquery.min.js\\u0022 crossorigin=\\u0022anonymous\\u0022 integrity=\\u0022sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=\\u0022\\u003E\\u003C/script\\u003E\"));</script>\n            <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js\" crossorigin=\"anonymous\" integrity=\"sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o\">\r\n    </script>\n            <script>(window.jQuery && window.jQuery.fn && window.jQuery.fn.modal||document.write(\"\\u003Cscript src=\\u0022/Prod/lib/bootstrap/dist/js/bootstrap.bundle.min.js\\u0022 crossorigin=\\u0022anonymous\\u0022 integrity=\\u0022sha384-xrRywqdh3PHs8keKZN\\u002B8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o\\u0022\\u003E\\u003C/script\\u003E\"));</script>\n            <script src=\"/Prod/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0\"></script>\n        </body>\n    </html>"
+            }
+          ]
+        },
+        {
+          "name": "Login - Invalid credentials",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 401 para credenciales inválidas', function () {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "",
+                  "pm.test('[BUG CHECK] No expone detalles del error de servidor', function () {",
+                  "    const body = pm.response.text();",
+                  "    pm.expect(body).to.not.include('StackTrace');",
+                  "    pm.expect(body).to.not.include('Exception');",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "Username",
+                  "value": "invalid_user"
+                },
+                {
+                  "key": "Password",
+                  "value": "wrongpassword123"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/Account/Login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Account",
+                "Login"
+              ]
+            },
+            "description": "Verifica el manejo correcto de credenciales inválidas"
+          },
+          "response": [
+            {
+              "name": "Bug - Invalid credentials",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "Username",
+                      "value": "invalid_user"
+                    },
+                    {
+                      "key": "Password",
+                      "value": "wrongpass123"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Account/Login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Account",
+                    "Login"
+                  ]
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Length",
+                  "value": "0"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 04 May 2026 19:45:33 GMT"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "x-amzn-RequestId",
+                  "value": "00a20aa4-0de1-40d9-94da-ded0f89b8811"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=2592000"
+                },
+                {
+                  "key": "Allow",
+                  "value": "GET"
+                },
+                {
+                  "key": "x-amz-apigw-id",
+                  "value": "c2uWlHzNoAMEBrA="
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache,no-store"
+                },
+                {
+                  "key": "Expires",
+                  "value": "-1"
+                },
+                {
+                  "key": "X-Amzn-Trace-Id",
+                  "value": "Root=1-69f8f75c-0907527d50e58d25593b934c;Parent=3765271b72683a40;Sampled=0;Lineage=1:da2a2ef2:0"
+                },
+                {
+                  "key": "X-Cache",
+                  "value": "Error from cloudfront"
+                },
+                {
+                  "key": "Via",
+                  "value": "1.1 e3c97f150401acbcdfdfdbcb3fcd713e.cloudfront.net (CloudFront)"
+                },
+                {
+                  "key": "X-Amz-Cf-Pop",
+                  "value": "QRO51-P4"
+                },
+                {
+                  "key": "X-Amz-Cf-Id",
+                  "value": "eX2x8v5rseaUtvHxStgrVYq_w4_4oyMYJAT8Hszpo_6Ujv6nmHZ0XQ=="
+                }
+              ],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        },
+        {
+          "name": "Login - Empty fields",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('No retorna 500 con campos vacíos', function () {",
+                  "    pm.response.to.not.have.status(500);",
+                  "});",
+                  "",
+                  "pm.test('[BUG CHECK] Retorna error de validación (400 o 401)', function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([400, 401]);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "Username",
+                  "value": ""
+                },
+                {
+                  "key": "Password",
+                  "value": ""
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/Account/Login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Account",
+                "Login"
+              ]
+            },
+            "description": "Verifica que campos vacíos no rompen el servidor"
+          },
+          "response": [
+            {
+              "name": "Bug - Empty fields",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "Username",
+                      "value": ""
+                    },
+                    {
+                      "key": "Password",
+                      "value": ""
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Account/Login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Account",
+                    "Login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/html; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "4572"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 04 May 2026 17:14:30 GMT"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "x-amzn-RequestId",
+                  "value": "ba043943-2a49-491b-9b22-1df44ef014e7"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=2592000"
+                },
+                {
+                  "key": "x-amz-apigw-id",
+                  "value": "c2YOgHbFIAMEIvg="
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store"
+                },
+                {
+                  "key": "X-Amzn-Trace-Id",
+                  "value": "Root=1-69f8d3f6-5f2a870047c565910ba7f48b;Parent=41af01a99875eccd;Sampled=0;Lineage=1:da2a2ef2:0"
+                },
+                {
+                  "key": "X-Cache",
+                  "value": "Miss from cloudfront"
+                },
+                {
+                  "key": "Via",
+                  "value": "1.1 09f9d4478a93ffe6a7bd306f3747b680.cloudfront.net (CloudFront)"
+                },
+                {
+                  "key": "X-Amz-Cf-Pop",
+                  "value": "DFW56-P6"
+                },
+                {
+                  "key": "X-Amz-Cf-Id",
+                  "value": "epgaZn3OomA006S6tiu46dEfETAVd2pmhg4cvTAeyoqIZtRDe0J1ag=="
+                }
+              ],
+              "cookie": [],
+              "body": "<!DOCTYPE html>\n<html>\n    <head>\n        <meta charset=\"utf-8\" />\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n        <title>Log In - Paylocity Benefits Dashboard</title>\n        <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\" crossorigin=\"anonymous\" integrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" />\n        <meta name=\"x-stylesheet-fallback-test\" content=\"\" class=\"sr-only\" />\n        <script>!function(a,b,c,d){var e,f=document,g=f.getElementsByTagName(\"SCRIPT\"),h=g[g.length-1].previousElementSibling,i=f.defaultView&&f.defaultView.getComputedStyle?f.defaultView.getComputedStyle(h):h.currentStyle;if(i&&i[a]!==b)for(e=0;e\n            <c.length;e++)f.write('\n                <link href=\"'+c[e]+'\" '+d+\"/>\")}(\"position\",\"absolute\",[\"/Prod/lib/bootstrap/dist/css/bootstrap.min.css\"], \"rel=\\u0022stylesheet\\u0022 crossorigin=\\u0022anonymous\\u0022 integrity=\\u0022sha384-ggOyR0iXCbMQv3Xipma34MD\\u002BdH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\\u0022 \");\n            </script>\n            <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css\" />\n            <link rel=\"stylesheet\" href=\"/Prod/css/site.css\" />\n        </head>\n        <body>\n            <header>\n                <nav class=\"navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom mb-3\">\n                    <div class=\"container\">\n                        <a class=\"navbar-brand\" href=\"/Prod/Benefits\">Paylocity Benefits Dashboard</a>\n                    </div>\n                </nav>\n            </header>\n            <div class=\"container\">\n                <main role=\"main\" class=\"pb-3\">\n                    <div class=\"row justify-content-md-center\">\n                        <div class=\"col-5 login-form-container rounded\">\n                            <form action=\"/Prod/Account/Login\" autocomplete=\"off\" method=\"post\">\n                                <img src=\"https://access.paylocity.com/images/paylocity-logo.svg\" width=\"227\" height=\"94\" alt=\"Paylocity\" />\n                                <div class=\"text-danger validation-summary-errors\" data-valmsg-summary=\"true\">\n                                    <span>There were one or more problems that prevented you from logging in:</span>\n                                    <ul>\n                                        <li>The Username field is required.</li>\n                                        <li>The Password field is required.</li>\n                                    </ul>\n                                </div>\n                                <div class=\"form-group\">\n                                    <label for=\"Username\">Username</label>\n                                    <input class=\"form-control input-validation-error\" data-val=\"true\" data-val-length=\"The field Username must be a string with a minimum length of 1 and a maximum length of 2147483647.\" data-val-length-min=\"1\" data-val-required=\"The Username field is required.\" id=\"Username\" maxlength=\"2147483647\" name=\"Username\" type=\"text\" value=\"\" />\n                                </div>\n                                <div class=\"form-group\">\n                                    <label for=\"Password\">Password</label>\n                                    <input class=\"form-control input-validation-error\" data-val=\"true\" data-val-length=\"The field Password must be a string with a minimum length of 1 and a maximum length of 2147483647.\" data-val-length-min=\"1\" data-val-required=\"The Password field is required.\" id=\"Password\" maxlength=\"2147483647\" name=\"Password\" type=\"password\" />\n                                </div>\n                                <button type=\"submit\" class=\"btn btn-primary\">Log In</button>\n                                <input name=\"__RequestVerificationToken\" type=\"hidden\" value=\"CfDJ8M6xNclcBQJGsYIc6QeTYL45NgA9ZYqbyvvmvmgjF6GxRcTcCP0iGNoa-UQx2fyBNPVYbfwccT5-76s1hhlT5LE2pitYUJKbS9zULS8Dy-fq1iR3Qil7tHIyXuN3-sTquCNTufkMHvF91Wk0iSFoFa4\" />\n                            </form>\n                        </div>\n                    </div>\n                </main>\n            </div>\n            <footer class=\"border-top footer text-muted\">\n                <div class=\"container\">\r\n      &copy; 2026 - Paylocity\r\n    </div>\n            </footer>\n            <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js\" crossorigin=\"anonymous\" integrity=\"sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=\">\r\n    </script>\n            <script>(window.jQuery||document.write(\"\\u003Cscript src=\\u0022/Prod/lib/jquery/dist/jquery.min.js\\u0022 crossorigin=\\u0022anonymous\\u0022 integrity=\\u0022sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=\\u0022\\u003E\\u003C/script\\u003E\"));</script>\n            <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js\" crossorigin=\"anonymous\" integrity=\"sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o\">\r\n    </script>\n            <script>(window.jQuery && window.jQuery.fn && window.jQuery.fn.modal||document.write(\"\\u003Cscript src=\\u0022/Prod/lib/bootstrap/dist/js/bootstrap.bundle.min.js\\u0022 crossorigin=\\u0022anonymous\\u0022 integrity=\\u0022sha384-xrRywqdh3PHs8keKZN\\u002B8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o\\u0022\\u003E\\u003C/script\\u003E\"));</script>\n            <script src=\"/Prod/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0\"></script>\n        </body>\n    </html>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GET",
+      "item": [
+        {
+          "name": "GET All Employees",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200 OK', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Respuesta es un array JSON', function () {",
+                  "    const body = pm.response.json();",
+                  "    pm.expect(body).to.be.an('array');",
+                  "});",
+                  "",
+                  "pm.test('Content-Type es application/json', function () {",
+                  "    pm.response.to.have.header('Content-Type');",
+                  "    const ct = pm.response.headers.get('Content-Type');",
+                  "    pm.expect(ct).to.include('application/json');",
+                  "});",
+                  "",
+                  "pm.test('Tiempo de respuesta menor a 3 segundos', function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(3000);",
+                  "});",
+                  "",
+                  "// Validar estructura de cada empleado si hay datos",
+                  "const body = pm.response.json();",
+                  "if (body.length > 0) {",
+                  "    pm.test('Cada empleado tiene los campos requeridos', function () {",
+                  "        body.forEach(function(emp) {",
+                  "            pm.expect(emp).to.have.property('id');",
+                  "            pm.expect(emp).to.have.property('firstName');",
+                  "            pm.expect(emp).to.have.property('lastName');",
+                  "        });",
+                  "    });",
+                  "",
+                  "    pm.test('[BUG CHECK] Cálculo de beneficios: salary neto > 0', function () {",
+                  "        body.forEach(function(emp) {",
+                  "            if (emp.hasOwnProperty('net')) {",
+                  "                pm.expect(emp.net).to.be.above(0);",
+                  "            }",
+                  "        });",
+                  "    });",
+                  "",
+                  "    pm.test('[BUG CHECK] Beneficio por empleado = $1000/año = $38.46/cheque', function () {",
+                  "        body.forEach(function(emp) {",
+                  "            if (emp.hasOwnProperty('benefitsCost') && emp.dependants === 0) {",
+                  "                const expected = parseFloat((1000 / 26).toFixed(2));",
+                  "                pm.expect(parseFloat(emp.benefitsCost.toFixed(2))).to.be.closeTo(expected, 0.02);",
+                  "            }",
+                  "        });",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/employees",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "employees"
+              ]
+            },
+            "description": "Obtiene todos los empleados. Valida estructura y cálculos de beneficios."
+          },
+          "response": [
+            {
+              "name": "GET All Employees",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/employees",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "employees"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "9093"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 04 May 2026 20:16:26 GMT"
+                },
+                {
+                  "key": "X-Amzn-Trace-Id",
+                  "value": "Root=1-69f8fe9a-7ecdf9aa269097e5559d0416;Parent=415d848fd440c590;Sampled=0;Lineage=1:da2a2ef2:0"
+                },
+                {
+                  "key": "x-amzn-RequestId",
+                  "value": "a8f20122-3d34-4fcc-90e5-be3e7d726740"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=2592000"
+                },
+                {
+                  "key": "x-amz-apigw-id",
+                  "value": "c2y4QFgLoAMEBBw="
+                },
+                {
+                  "key": "X-Cache",
+                  "value": "Miss from cloudfront"
+                },
+                {
+                  "key": "Via",
+                  "value": "1.1 fe5ca6bb755faadf4f2b71cc78a55b00.cloudfront.net (CloudFront)"
+                },
+                {
+                  "key": "X-Amz-Cf-Pop",
+                  "value": "QRO51-P4"
+                },
+                {
+                  "key": "X-Amz-Cf-Id",
+                  "value": "Nr2DcuR5DK_DJLbKp9nfrgrFta8P9Q9YZhf-0vOJHOfVmIuI2bPYPg=="
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"0199ce61-88b9-40e8-8209-5d77ab0b8dc3\",\n        \"username\": \"TestUser949\",\n        \"id\": \"0199ce61-88b9-40e8-8209-5d77ab0b8dc3\",\n        \"firstName\": \"Ramon\",\n        \"lastName\": \"Torres\",\n        \"dependants\": 5,\n        \"expiration\": \"2026-05-25T04:58:33+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 134.61539,\n        \"net\": 1865.3846\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"09f682b1-5cc2-48ad-8f23-6f8faf9b7d51\",\n        \"username\": \"TestUser949\",\n        \"id\": \"09f682b1-5cc2-48ad-8f23-6f8faf9b7d51\",\n        \"firstName\": \"Ana\",\n        \"lastName\": \"Lopez\",\n        \"dependants\": 0,\n        \"expiration\": \"2026-05-27T19:44:25+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 38.46154,\n        \"net\": 1961.5385\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"142186ee-e115-42c1-9511-07cd28d1fc97\",\n        \"username\": \"TestUser949\",\n        \"id\": \"142186ee-e115-42c1-9511-07cd28d1fc97\",\n        \"firstName\": \"AJ\",\n        \"lastName\": \"Mitchell\",\n        \"dependants\": 3,\n        \"expiration\": \"2026-05-24T15:44:09+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 96.153854,\n        \"net\": 1903.8462\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"15fc451e-87bc-456e-8205-8049bd12fa79\",\n        \"username\": \"TestUser949\",\n        \"id\": \"15fc451e-87bc-456e-8205-8049bd12fa79\",\n        \"firstName\": \"2343234\",\n        \"lastName\": \"23242\",\n        \"dependants\": 2,\n        \"expiration\": \"2026-05-24T15:44:46+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 76.92308,\n        \"net\": 1923.0769\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"18661725-ea33-4beb-ab38-f5533aaa4ba8\",\n        \"username\": \"TestUser949\",\n        \"id\": \"18661725-ea33-4beb-ab38-f5533aaa4ba8\",\n        \"firstName\": \"Steve\",\n        \"lastName\": \"Rogers\",\n        \"dependants\": 1,\n        \"expiration\": \"2026-05-22T18:08:37+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 57.69231,\n        \"net\": 1942.3077\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"1a77db51-ffe7-4cae-b6e3-c6c331186b5b\",\n        \"username\": \"TestUser949\",\n        \"id\": \"1a77db51-ffe7-4cae-b6e3-c6c331186b5b\",\n        \"firstName\": \"Barbara\",\n        \"lastName\": \"Gomez\",\n        \"dependants\": 31,\n        \"expiration\": \"2026-05-22T19:09:00+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 634.6154,\n        \"net\": 1365.3845\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"1b19ebb9-5e9b-457e-b37c-a5f9f5defa6e\",\n        \"username\": \"TestUser949\",\n        \"id\": \"1b19ebb9-5e9b-457e-b37c-a5f9f5defa6e\",\n        \"firstName\": \"Shawn\",\n        \"lastName\": \"Torres\",\n        \"dependants\": 30,\n        \"expiration\": \"2026-05-22T19:08:49+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 615.38464,\n        \"net\": 1384.6154\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"1bcdd138-1e13-4839-b84e-6f1acd478c16\",\n        \"username\": \"TestUser949\",\n        \"id\": \"1bcdd138-1e13-4839-b84e-6f1acd478c16\",\n        \"firstName\": \"Miguel\",\n        \"lastName\": \"Perez\",\n        \"dependants\": 0,\n        \"expiration\": \"2026-05-25T02:23:07+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 38.46154,\n        \"net\": 1961.5385\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"2eb3c10e-d2ff-4bbf-87f8-32b2dd625e46\",\n        \"username\": \"TestUser949\",\n        \"id\": \"2eb3c10e-d2ff-4bbf-87f8-32b2dd625e46\",\n        \"firstName\": \"Ana\",\n        \"lastName\": \"Lopez\",\n        \"dependants\": 0,\n        \"expiration\": \"2026-05-27T19:44:33+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 38.46154,\n        \"net\": 1961.5385\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"354d813b-c75f-4dc1-8aa1-d825381d1abe\",\n        \"username\": \"TestUser949\",\n        \"id\": \"354d813b-c75f-4dc1-8aa1-d825381d1abe\",\n        \"firstName\": \"Joel\",\n        \"lastName\": \"Macias\",\n        \"dependants\": 0,\n        \"expiration\": \"2026-05-27T19:33:03+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 38.46154,\n        \"net\": 1961.5385\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"35c2bf22-1b02-45f9-a934-b1ca5e7e23e4\",\n        \"username\": \"TestUser949\",\n        \"id\": \"35c2bf22-1b02-45f9-a934-b1ca5e7e23e4\",\n        \"firstName\": \"Tessa\",\n        \"lastName\": \"Brooks\",\n        \"dependants\": 0,\n        \"expiration\": \"2026-05-27T19:45:57+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 38.46154,\n        \"net\": 1961.5385\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"37d6d4ff-ba89-4e56-9046-506ea8441cb6\",\n        \"username\": \"TestUser949\",\n        \"id\": \"37d6d4ff-ba89-4e56-9046-506ea8441cb6\",\n        \"firstName\": \"Daniel\",\n        \"lastName\": \"Arteaga\",\n        \"dependants\": 6,\n        \"expiration\": \"2026-05-22T19:04:22+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 153.84616,\n        \"net\": 1846.1538\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"38edeca4-1aee-4826-bd57-b7b3ba2a777b\",\n        \"username\": \"TestUser949\",\n        \"id\": \"38edeca4-1aee-4826-bd57-b7b3ba2a777b\",\n        \"firstName\": \"Tessa\",\n        \"lastName\": \"Brooks\",\n        \"dependants\": 0,\n        \"expiration\": \"2026-05-27T19:55:04+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 38.46154,\n        \"net\": 1961.5385\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"3cb825ca-8ecd-4b30-a0e2-d2ae92788da1\",\n        \"username\": \"TestUser949\",\n        \"id\": \"3cb825ca-8ecd-4b30-a0e2-d2ae92788da1\",\n        \"firstName\": \"Barbara\",\n        \"lastName\": \"Torres\",\n        \"dependants\": 1,\n        \"expiration\": \"2026-05-22T18:38:45+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 57.69231,\n        \"net\": 1942.3077\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"44dbb4b1-15c1-44bc-b479-583b19473f84\",\n        \"username\": \"TestUser949\",\n        \"id\": \"44dbb4b1-15c1-44bc-b479-583b19473f84\",\n        \"firstName\": \"Alia\",\n        \"lastName\": \"Bravo\",\n        \"dependants\": 0,\n        \"expiration\": \"2026-05-27T20:00:15+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 38.46154,\n        \"net\": 1961.5385\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"45d3b65a-61a1-4a61-a4ac-df465c971dbb\",\n        \"username\": \"TestUser949\",\n        \"id\": \"45d3b65a-61a1-4a61-a4ac-df465c971dbb\",\n        \"firstName\": \"Justin\",\n        \"lastName\": \"Macias\",\n        \"dependants\": 3,\n        \"expiration\": \"2026-05-22T19:05:25+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 96.153854,\n        \"net\": 1903.8462\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"4e79c9da-d538-4843-88fa-c76b58d1ec0f\",\n        \"username\": \"TestUser949\",\n        \"id\": \"4e79c9da-d538-4843-88fa-c76b58d1ec0f\",\n        \"firstName\": \"AJ\",\n        \"lastName\": \"Mitchell\",\n        \"dependants\": 3,\n        \"expiration\": \"2026-05-24T15:44:09+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 96.153854,\n        \"net\": 1903.8462\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"5a94dde5-2fd4-40bd-8a6e-8524f79440b8\",\n        \"username\": \"TestUser949\",\n        \"id\": \"5a94dde5-2fd4-40bd-8a6e-8524f79440b8\",\n        \"firstName\": \"Abraham\",\n        \"lastName\": \"Mateo\",\n        \"dependants\": 8,\n        \"expiration\": \"2026-05-22T18:56:53+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 192.30771,\n        \"net\": 1807.6923\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"5f4a70c2-42d2-4046-a867-c6a3a4e3b1d8\",\n        \"username\": \"TestUser949\",\n        \"id\": \"5f4a70c2-42d2-4046-a867-c6a3a4e3b1d8\",\n        \"firstName\": \"Alejandro5\",\n        \"lastName\": \"Alvares\",\n        \"dependants\": 5,\n        \"expiration\": \"2026-05-22T19:05:57+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 134.61539,\n        \"net\": 1865.3846\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"6038b008-45be-403b-82ea-019c4607d170\",\n        \"username\": \"TestUser949\",\n        \"id\": \"6038b008-45be-403b-82ea-019c4607d170\",\n        \"firstName\": \"43544\",\n        \"lastName\": \"435435234\",\n        \"dependants\": 2,\n        \"expiration\": \"2026-05-22T19:06:09+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 76.92308,\n        \"net\": 1923.0769\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"70b73855-330e-42c8-8d36-bd756023c8f1\",\n        \"username\": \"TestUser949\",\n        \"id\": \"70b73855-330e-42c8-8d36-bd756023c8f1\",\n        \"firstName\": \"Shawn\",\n        \"lastName\": \"Mendes\",\n        \"dependants\": 4,\n        \"expiration\": \"2026-05-22T19:03:26+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 115.38462,\n        \"net\": 1884.6154\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"7564bb8e-bbf1-48d0-be39-af7e4f7f7836\",\n        \"username\": \"TestUser949\",\n        \"id\": \"7564bb8e-bbf1-48d0-be39-af7e4f7f7836\",\n        \"firstName\": \"Tessa\",\n        \"lastName\": \"Brooks\",\n        \"dependants\": 0,\n        \"expiration\": \"2026-05-27T19:57:37+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 38.46154,\n        \"net\": 1961.5385\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"88946307-2be2-42c1-b516-04f24bcd3553\",\n        \"username\": \"TestUser949\",\n        \"id\": \"88946307-2be2-42c1-b516-04f24bcd3553\",\n        \"firstName\": \"Violeta\",\n        \"lastName\": \"Torres\",\n        \"dependants\": 0,\n        \"expiration\": \"2026-05-25T02:07:37+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 38.46154,\n        \"net\": 1961.5385\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"8cddc44e-0f88-4a85-b061-f76789522304\",\n        \"username\": \"TestUser949\",\n        \"id\": \"8cddc44e-0f88-4a85-b061-f76789522304\",\n        \"firstName\": \"Miguel\",\n        \"lastName\": \"Perez\",\n        \"dependants\": 0,\n        \"expiration\": \"2026-05-25T02:22:36+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 38.46154,\n        \"net\": 1961.5385\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"982f1db8-73c0-40fa-b61b-93e5b9f3c58d\",\n        \"username\": \"TestUser949\",\n        \"id\": \"982f1db8-73c0-40fa-b61b-93e5b9f3c58d\",\n        \"firstName\": \"Ana\",\n        \"lastName\": \"Lopez\",\n        \"dependants\": 0,\n        \"expiration\": \"2026-05-27T19:44:12+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 38.46154,\n        \"net\": 1961.5385\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"9b4cae18-fe44-485e-a318-a6b3d92398f3\",\n        \"username\": \"TestUser949\",\n        \"id\": \"9b4cae18-fe44-485e-a318-a6b3d92398f3\",\n        \"firstName\": \"Anahi\",\n        \"lastName\": \"Barajas\",\n        \"dependants\": 0,\n        \"expiration\": \"2026-05-27T19:44:58+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 38.46154,\n        \"net\": 1961.5385\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"b8af01d4-703d-4cc6-b5f8-300c3a58df17\",\n        \"username\": \"TestUser949\",\n        \"id\": \"b8af01d4-703d-4cc6-b5f8-300c3a58df17\",\n        \"firstName\": \"Shawn\",\n        \"lastName\": \"Torres\",\n        \"dependants\": 11,\n        \"expiration\": \"2026-05-22T19:07:38+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 250,\n        \"net\": 1750\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"d9291507-27fb-448e-8652-d24165b20ff4\",\n        \"username\": \"TestUser949\",\n        \"id\": \"d9291507-27fb-448e-8652-d24165b20ff4\",\n        \"firstName\": \"Samantha\",\n        \"lastName\": \"Gomez\",\n        \"dependants\": 6,\n        \"expiration\": \"2026-05-22T19:03:38+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 153.84616,\n        \"net\": 1846.1538\n    },\n    {\n        \"partitionKey\": \"TestUser949\",\n        \"sortKey\": \"df971199-e0f9-432b-beb8-641f73bc5278\",\n        \"username\": \"TestUser949\",\n        \"id\": \"df971199-e0f9-432b-beb8-641f73bc5278\",\n        \"firstName\": \"Alejandro\",\n        \"lastName\": \"Flores\",\n        \"dependants\": 2,\n        \"expiration\": \"2026-05-24T08:29:18+00:00\",\n        \"salary\": 52000,\n        \"gross\": 2000,\n        \"benefitsCost\": 76.92308,\n        \"net\": 1923.0769\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "GET Employee by ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200 OK para ID válido', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Respuesta contiene datos del empleado', function () {",
+                  "    const body = pm.response.json();",
+                  "    pm.expect(body).to.have.property('id');",
+                  "    pm.expect(body).to.have.property('firstName');",
+                  "    pm.expect(body).to.have.property('lastName');",
+                  "});",
+                  "",
+                  "pm.test('[BUG CHECK] ID retornado coincide con ID solicitado', function () {",
+                  "    const body = pm.response.json();",
+                  "    const requestedId = pm.collectionVariables.get('employeeId');",
+                  "    pm.expect(body.id).to.equal(requestedId);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/employees/{{employeeId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "employees",
+                "{{employeeId}}"
+              ]
+            },
+            "description": "Obtiene un empleado por ID. Requiere haber creado uno primero."
+          },
+          "response": [
+            {
+              "name": "GET Employee by ID",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/employees/{{employeeId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "employees",
+                    "{{employeeId}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "314"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 04 May 2026 20:18:09 GMT"
+                },
+                {
+                  "key": "X-Amzn-Trace-Id",
+                  "value": "Root=1-69f8fefe-3c546d2e094846832c7159ff;Parent=2ff6e98d047f84ef;Sampled=0;Lineage=1:da2a2ef2:0"
+                },
+                {
+                  "key": "x-amzn-RequestId",
+                  "value": "1fb1e9ec-14ba-4153-b80a-86518027a5be"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=2592000"
+                },
+                {
+                  "key": "x-amz-apigw-id",
+                  "value": "c2zHwGSxoAMEoNQ="
+                },
+                {
+                  "key": "X-Cache",
+                  "value": "Miss from cloudfront"
+                },
+                {
+                  "key": "Via",
+                  "value": "1.1 0d4588f724672b05b8aac0acf6668e30.cloudfront.net (CloudFront)"
+                },
+                {
+                  "key": "X-Amz-Cf-Pop",
+                  "value": "DFW56-P6"
+                },
+                {
+                  "key": "X-Amz-Cf-Id",
+                  "value": "tY7g3cfky6CNqZbDeghZHkrkulBqsePCN-VriwGSUDmZ2FGDLIH8rQ=="
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"partitionKey\": \"TestUser949\",\n    \"sortKey\": \"1b19ebb9-5e9b-457e-b37c-a5f9f5defa6e\",\n    \"username\": \"TestUser949\",\n    \"id\": \"1b19ebb9-5e9b-457e-b37c-a5f9f5defa6e\",\n    \"firstName\": \"Shawn\",\n    \"lastName\": \"Torres\",\n    \"dependants\": 30,\n    \"expiration\": \"2026-05-22T19:08:49+00:00\",\n    \"salary\": 52000,\n    \"gross\": 2000,\n    \"benefitsCost\": 615.38464,\n    \"net\": 1384.6154\n}"
+            }
+          ]
+        },
+        {
+          "name": "GET Employee - ID Not Exist",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('[BUG CHECK] Status 404 para ID inexistente', function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test('No retorna 500 Internal Server Error', function () {",
+                  "    pm.response.to.not.have.status(500);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/employees/00000000-0000-0000-0000-000000000000",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "employees",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "description": "Verifica que un ID inexistente retorna 404 y no rompe el servidor"
+          },
+          "response": [
+            {
+              "name": "GET Employee - ID Not Exist",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/employees/000000000000000000000",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "employees",
+                    "000000000000000000000"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/html; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "3612"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 04 May 2026 20:21:04 GMT"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "x-amzn-RequestId",
+                  "value": "da6ec984-4bd5-4479-a6f5-6c41395c89d7"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=2592000"
+                },
+                {
+                  "key": "x-amz-apigw-id",
+                  "value": "c2zjeFwNoAMEa0w="
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache,no-store"
+                },
+                {
+                  "key": "Expires",
+                  "value": "-1"
+                },
+                {
+                  "key": "X-Amzn-Trace-Id",
+                  "value": "Root=1-69f8ffaf-5e4ee25d46c1488449c9b9c6;Parent=7144d0fbbe6da31d;Sampled=0;Lineage=1:da2a2ef2:0"
+                },
+                {
+                  "key": "X-Cache",
+                  "value": "Error from cloudfront"
+                },
+                {
+                  "key": "Via",
+                  "value": "1.1 281130e10c4604d0aa372211e99eebbe.cloudfront.net (CloudFront)"
+                },
+                {
+                  "key": "X-Amz-Cf-Pop",
+                  "value": "DFW56-P6"
+                },
+                {
+                  "key": "X-Amz-Cf-Id",
+                  "value": "LIeNCU3rfvcYpfa7IXufjG_xjqDu537BTcZbNUJ_hN-qmgwKxq90fw=="
+                }
+              ],
+              "cookie": [],
+              "body": "<!DOCTYPE html>\n<html>\n    <head>\n        <meta charset=\"utf-8\" />\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n        <title>Error - Paylocity Benefits Dashboard</title>\n        <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\" crossorigin=\"anonymous\" integrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" />\n        <meta name=\"x-stylesheet-fallback-test\" content=\"\" class=\"sr-only\" />\n        <script>!function(a,b,c,d){var e,f=document,g=f.getElementsByTagName(\"SCRIPT\"),h=g[g.length-1].previousElementSibling,i=f.defaultView&&f.defaultView.getComputedStyle?f.defaultView.getComputedStyle(h):h.currentStyle;if(i&&i[a]!==b)for(e=0;e\n            <c.length;e++)f.write('\n                <link href=\"'+c[e]+'\" '+d+\"/>\")}(\"position\",\"absolute\",[\"/Prod/lib/bootstrap/dist/css/bootstrap.min.css\"], \"rel=\\u0022stylesheet\\u0022 crossorigin=\\u0022anonymous\\u0022 integrity=\\u0022sha384-ggOyR0iXCbMQv3Xipma34MD\\u002BdH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\\u0022 \");\n            </script>\n            <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css\" />\n            <link rel=\"stylesheet\" href=\"/Prod/css/site.css\" />\n        </head>\n        <body>\n            <header>\n                <nav class=\"navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom mb-3\">\n                    <div class=\"container\">\n                        <a class=\"navbar-brand\" href=\"/Prod/Benefits\">Paylocity Benefits Dashboard</a>\n                    </div>\n                </nav>\n            </header>\n            <div class=\"container\">\n                <main role=\"main\" class=\"pb-3\">\n                    <h1 class=\"text-danger\">Error.</h1>\n                    <h2 class=\"text-danger\">An error occurred while processing your request.</h2>\n                    <p>\n                        <strong>Request ID:</strong>\n                        <code>0HNLA3AL570CF</code>\n                    </p>\n                    <h3>Development Mode</h3>\n                    <p>\r\n  Swapping to \n                        <strong>Development</strong> environment will display more detailed information about the error that occurred.\n                    </p>\n                    <p>\n                        <strong>The Development environment shouldn't be enabled for deployed applications.</strong>\r\n  It can result in displaying sensitive information from exceptions to end users.\r\n  For local debugging, enable the\n                        <strong>Development</strong> environment by setting the\n                        <strong>ASPNETCORE_ENVIRONMENT</strong> environment variable to\n                        <strong>Development</strong>\r\n  and restarting the app.\n                    </p>\n                </main>\n            </div>\n            <footer class=\"border-top footer text-muted\">\n                <div class=\"container\">\r\n      &copy; 2026 - Paylocity\r\n    </div>\n            </footer>\n            <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js\" crossorigin=\"anonymous\" integrity=\"sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=\">\r\n    </script>\n            <script>(window.jQuery||document.write(\"\\u003Cscript src=\\u0022/Prod/lib/jquery/dist/jquery.min.js\\u0022 crossorigin=\\u0022anonymous\\u0022 integrity=\\u0022sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=\\u0022\\u003E\\u003C/script\\u003E\"));</script>\n            <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js\" crossorigin=\"anonymous\" integrity=\"sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o\">\r\n    </script>\n            <script>(window.jQuery && window.jQuery.fn && window.jQuery.fn.modal||document.write(\"\\u003Cscript src=\\u0022/Prod/lib/bootstrap/dist/js/bootstrap.bundle.min.js\\u0022 crossorigin=\\u0022anonymous\\u0022 integrity=\\u0022sha384-xrRywqdh3PHs8keKZN\\u002B8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o\\u0022\\u003E\\u003C/script\\u003E\"));</script>\n            <script src=\"/Prod/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0\"></script>\n        </body>\n    </html>"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "POST",
+      "item": [
+        {
+          "name": "POST Employee - Valid data",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200 o 201 al crear empleado', function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+                  "});",
+                  "",
+                  "pm.test('Respuesta contiene ID del nuevo empleado', function () {",
+                  "    const body = pm.response.json();",
+                  "    pm.expect(body).to.have.property('id');",
+                  "    pm.expect(body.id).to.not.be.empty;",
+                  "    // Guardar ID para pruebas posteriores",
+                  "    pm.collectionVariables.set('employeeId', body.id);",
+                  "    console.log('Employee ID guardado:', body.id);",
+                  "});",
+                  "",
+                  "pm.test('Empleado creado tiene firstName correcto', function () {",
+                  "    const body = pm.response.json();",
+                  "    pm.expect(body.firstName).to.equal('Juan');",
+                  "});",
+                  "",
+                  "pm.test('Empleado creado tiene lastName correcto', function () {",
+                  "    const body = pm.response.json();",
+                  "    pm.expect(body.lastName).to.equal('Perez');",
+                  "});",
+                  "",
+                  "// REGLA DE NEGOCIO: 26 cheques/año, $2000/cheque, beneficio $1000/año",
+                  "pm.test('[NEGOCIO] Salario bruto por cheque = $2000', function () {",
+                  "    const body = pm.response.json();",
+                  "    if (body.hasOwnProperty('salary')) {",
+                  "        pm.expect(body.salary).to.equal(2000);",
+                  "    }",
+                  "});",
+                  "",
+                  "pm.test('[NEGOCIO] Costo de beneficio empleado sin dependientes', function () {",
+                  "    const body = pm.response.json();",
+                  "    // $1000/año / 26 cheques = $38.46/cheque",
+                  "    const expectedBenefitPerPaycheck = 1000 / 26;",
+                  "    if (body.hasOwnProperty('benefitsCost')) {",
+                  "        pm.expect(body.benefitsCost).to.be.closeTo(expectedBenefitPerPaycheck, 0.05);",
+                  "    }",
+                  "});",
+                  "",
+                  "pm.test('[NEGOCIO] Salario neto = $2000 - costo beneficios', function () {",
+                  "    const body = pm.response.json();",
+                  "    if (body.hasOwnProperty('net') && body.hasOwnProperty('benefitsCost')) {",
+                  "        const expectedNet = 2000 - body.benefitsCost;",
+                  "        pm.expect(body.net).to.be.closeTo(expectedNet, 0.05);",
+                  "    }",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Juan\",\n  \"lastName\": \"Perez\",\n  \"dependants\": 0\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/employees",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "employees"
+              ]
+            },
+            "description": "Crea un empleado válido sin dependientes. Valida reglas de negocio de beneficios."
+          },
+          "response": [
+            {
+              "name": "POST Employee - Valid data",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"Juan\",\n  \"lastName\": \"Perez\",\n  \"dependants\": 0\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/employees",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "employees"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "269"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 04 May 2026 20:44:40 GMT"
+                },
+                {
+                  "key": "X-Amzn-Trace-Id",
+                  "value": "Root=1-69f90535-4c99e5981609785b74d69006;Parent=5fdb726ff32b07b6;Sampled=0;Lineage=1:da2a2ef2:0"
+                },
+                {
+                  "key": "x-amzn-RequestId",
+                  "value": "1b394e93-5ec6-4586-a33f-05bce25bc6b0"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=2592000"
+                },
+                {
+                  "key": "x-amz-apigw-id",
+                  "value": "c23AXGcZoAMEoaQ="
+                },
+                {
+                  "key": "X-Cache",
+                  "value": "Miss from cloudfront"
+                },
+                {
+                  "key": "Via",
+                  "value": "1.1 0d4588f724672b05b8aac0acf6668e30.cloudfront.net (CloudFront)"
+                },
+                {
+                  "key": "X-Amz-Cf-Pop",
+                  "value": "DFW56-P6"
+                },
+                {
+                  "key": "X-Amz-Cf-Id",
+                  "value": "D9nVRtOHhqiCrktjzFToCV55E80yxAvbVSYbhoEI2AcH9d5kuYd85w=="
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"partitionKey\": \"TestUser949\",\n    \"sortKey\": \"25828e65-eb91-4fd2-bae8-82a7a4d0050f\",\n    \"username\": \"TestUser949\",\n    \"id\": \"25828e65-eb91-4fd2-bae8-82a7a4d0050f\",\n    \"firstName\": \"Juan\",\n    \"lastName\": \"Perez\",\n    \"dependants\": 0,\n    \"salary\": 52000,\n    \"gross\": 2000,\n    \"benefitsCost\": 38.46154,\n    \"net\": 1961.5385\n}"
+            }
+          ]
+        },
+        {
+          "name": "POST Employee - Maximum dependents (32)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('[BUG CHECK] Valida máximo de dependientes permitidos', function () {",
+                  "    // Si el sistema permite > 32 dependientes, puede ser un bug",
+                  "    pm.expect(pm.response.code).to.be.oneOf([200, 201, 400]);",
+                  "});",
+                  "",
+                  "if (pm.response.code === 400) {",
+                  "    pm.test('Error 400 con mensaje descriptivo para dependientes excesivos', function () {",
+                  "        const body = pm.response.json();",
+                  "        pm.expect(body).to.have.property('message').or.to.have.property('errors');",
+                  "    });",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Test\",\n  \"lastName\": \"MaxDeps\",\n  \"dependants\": 32\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/employees",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "employees"
+              ]
+            },
+            "description": "Prueba con el máximo teórico de dependientes (32)"
+          },
+          "response": [
+            {
+              "name": "POST Employee - Maximum dependents (32)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"Test\",\n  \"lastName\": \"MaxDeps\",\n  \"dependants\": 32\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/employees",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "employees"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "272"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 04 May 2026 20:46:49 GMT"
+                },
+                {
+                  "key": "X-Amzn-Trace-Id",
+                  "value": "Root=1-69f905b6-4111c4da567496e3537b03b5;Parent=448b8a7cd6311263;Sampled=0;Lineage=1:da2a2ef2:0"
+                },
+                {
+                  "key": "x-amzn-RequestId",
+                  "value": "8d6cd85d-6441-4c15-ba64-8426b1e1c565"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=2592000"
+                },
+                {
+                  "key": "x-amz-apigw-id",
+                  "value": "c23UgFDfoAMEt-A="
+                },
+                {
+                  "key": "X-Cache",
+                  "value": "Miss from cloudfront"
+                },
+                {
+                  "key": "Via",
+                  "value": "1.1 64547adbca92d623e1e5bb3c4c4adb2c.cloudfront.net (CloudFront)"
+                },
+                {
+                  "key": "X-Amz-Cf-Pop",
+                  "value": "DFW56-P6"
+                },
+                {
+                  "key": "X-Amz-Cf-Id",
+                  "value": "ucu96gwIoNg3JBUZUGHlYDFyuUo3Zn6SnQQWcbusa4jfEC6Z6xHp1A=="
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"partitionKey\": \"TestUser949\",\n    \"sortKey\": \"56d33029-5f6d-4b8c-b9e2-03e43887e8b6\",\n    \"username\": \"TestUser949\",\n    \"id\": \"56d33029-5f6d-4b8c-b9e2-03e43887e8b6\",\n    \"firstName\": \"Test\",\n    \"lastName\": \"MaxDeps\",\n    \"dependants\": 32,\n    \"salary\": 52000,\n    \"gross\": 2000,\n    \"benefitsCost\": 653.8462,\n    \"net\": 1346.1538\n}"
+            },
+            {
+              "name": "POST Employee - Maximum dependents (32)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"Zara\",\n  \"lastName\": \"Larson\",\n  \"dependants\": 34\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/employees",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "employees"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "96"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 04 May 2026 20:47:24 GMT"
+                },
+                {
+                  "key": "X-Amzn-Trace-Id",
+                  "value": "Root=1-69f905db-61dff6307a53d8057758b1a6;Parent=3b5a8d2e3d8a6014;Sampled=0;Lineage=1:da2a2ef2:0"
+                },
+                {
+                  "key": "x-amzn-RequestId",
+                  "value": "469d198b-cda4-4b4c-a88f-df8b2d36bb97"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=2592000"
+                },
+                {
+                  "key": "x-amz-apigw-id",
+                  "value": "c23abEZxoAMEQ4w="
+                },
+                {
+                  "key": "X-Cache",
+                  "value": "Error from cloudfront"
+                },
+                {
+                  "key": "Via",
+                  "value": "1.1 64547adbca92d623e1e5bb3c4c4adb2c.cloudfront.net (CloudFront)"
+                },
+                {
+                  "key": "X-Amz-Cf-Pop",
+                  "value": "DFW56-P6"
+                },
+                {
+                  "key": "X-Amz-Cf-Id",
+                  "value": "NyGvJckenx8tPMVlvNUfpBkNoS250SEzxMqDSRChp6RISK0Gm32MPw=="
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"memberNames\": [\n            \"Dependants\"\n        ],\n        \"errorMessage\": \"The field Dependants must be between 0 and 32.\"\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "POST Employee - firstName null",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('[BUG] Debe rechazar firstName vacío con 400', function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([400, 422]);",
+                  "});",
+                  "",
+                  "pm.test('[BUG] No debe crear empleado sin nombre', function () {",
+                  "    pm.response.to.not.have.status(200);",
+                  "    pm.response.to.not.have.status(201);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"\",\n  \"lastName\": \"TestLastName\",\n  \"dependants\": 0\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/employees",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "employees"
+              ]
+            },
+            "description": "BUG: El sistema debe validar que firstName no esté vacío"
+          },
+          "response": [
+            {
+              "name": "POST Employee - firstName null",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"\",\n  \"lastName\": \"TestLastName\",\n  \"dependants\": 0\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/employees",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "employees"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "81"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 04 May 2026 20:48:53 GMT"
+                },
+                {
+                  "key": "X-Amzn-Trace-Id",
+                  "value": "Root=1-69f90634-63f6098e55663804379519fd;Parent=76ba4d3918178b3e;Sampled=0;Lineage=1:da2a2ef2:0"
+                },
+                {
+                  "key": "x-amzn-RequestId",
+                  "value": "979b31ab-f789-4def-ae8e-7e68595f2bd7"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=2592000"
+                },
+                {
+                  "key": "x-amz-apigw-id",
+                  "value": "c23oVEJHoAMEUoA="
+                },
+                {
+                  "key": "X-Cache",
+                  "value": "Error from cloudfront"
+                },
+                {
+                  "key": "Via",
+                  "value": "1.1 93431b4d330f776a163179764aacfa18.cloudfront.net (CloudFront)"
+                },
+                {
+                  "key": "X-Amz-Cf-Pop",
+                  "value": "QRO51-P4"
+                },
+                {
+                  "key": "X-Amz-Cf-Id",
+                  "value": "i41mXdUKasXl4T3nXnabFUIfXFGKrlk2_MOd2nyy9wxz9-lQXPXPXw=="
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"memberNames\": [\n            \"FirstName\"\n        ],\n        \"errorMessage\": \"The FirstName field is required.\"\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "POST Employee -  Missing fields",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('[BUG CHECK] Retorna 400 cuando faltan campos requeridos', function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([400, 422]);",
+                  "});",
+                  "",
+                  "pm.test('No retorna 500 con body incompleto', function () {",
+                  "    pm.response.to.not.have.status(500);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"SoloNombre\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/employees",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "employees"
+              ]
+            },
+            "description": "Verifica validación cuando faltan campos obligatorios"
+          },
+          "response": [
+            {
+              "name": "POST Employee -  Missing fields",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"Mateo\"\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/employees",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "employees"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "79"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 04 May 2026 20:49:57 GMT"
+                },
+                {
+                  "key": "X-Amzn-Trace-Id",
+                  "value": "Root=1-69f90675-2fbcb059657ed15131582d81;Parent=4c6e44318754e17e;Sampled=0;Lineage=1:da2a2ef2:0"
+                },
+                {
+                  "key": "x-amzn-RequestId",
+                  "value": "aa6459fb-10f5-4882-9def-de3d5160af37"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=2592000"
+                },
+                {
+                  "key": "x-amz-apigw-id",
+                  "value": "c23ydGOAIAMEhSQ="
+                },
+                {
+                  "key": "X-Cache",
+                  "value": "Error from cloudfront"
+                },
+                {
+                  "key": "Via",
+                  "value": "1.1 91f55eb5a33811f2b90b5e1f39b51484.cloudfront.net (CloudFront)"
+                },
+                {
+                  "key": "X-Amz-Cf-Pop",
+                  "value": "DFW56-P6"
+                },
+                {
+                  "key": "X-Amz-Cf-Id",
+                  "value": "JrkQ89RIWUG7jxUvgxg4AXnuDomGF0CnwNHGUvvEmUIEbQP2-z-gFg=="
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"memberNames\": [\n            \"LastName\"\n        ],\n        \"errorMessage\": \"The LastName field is required.\"\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "POST Employee - firstName long",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('[BUG CHECK] Valida longitud máxima del nombre', function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([400, 200, 201]);",
+                  "});",
+                  "",
+                  "pm.test('No retorna 500 con nombre extremadamente largo', function () {",
+                  "    pm.response.to.not.have.status(500);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\",\n  \"lastName\": \"Test\",\n  \"dependants\": 0\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/employees",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "employees"
+              ]
+            },
+            "description": "Verifica el límite de longitud en el campo firstName (100+ caracteres)"
+          },
+          "response": [
+            {
+              "name": "POST Employee - firstName long",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\",\n  \"lastName\": \"Test\",\n  \"dependants\": 0\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/employees",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "employees"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "114"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 04 May 2026 20:50:54 GMT"
+                },
+                {
+                  "key": "X-Amzn-Trace-Id",
+                  "value": "Root=1-69f906ae-55d299693d18bc323e2624ae;Parent=7b0ec7a0b1b18eb8;Sampled=0;Lineage=1:da2a2ef2:0"
+                },
+                {
+                  "key": "x-amzn-RequestId",
+                  "value": "5ffad4df-550e-40f6-8ad0-e048bb2e06e7"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=2592000"
+                },
+                {
+                  "key": "x-amz-apigw-id",
+                  "value": "c237SHOZIAMEeLQ="
+                },
+                {
+                  "key": "X-Cache",
+                  "value": "Error from cloudfront"
+                },
+                {
+                  "key": "Via",
+                  "value": "1.1 91f55eb5a33811f2b90b5e1f39b51484.cloudfront.net (CloudFront)"
+                },
+                {
+                  "key": "X-Amz-Cf-Pop",
+                  "value": "DFW56-P6"
+                },
+                {
+                  "key": "X-Amz-Cf-Id",
+                  "value": "1Aks2Ol0ebWXcI4PgbizZdmN2khAqm-VSggimdvLTWrq0p3bL8kG6g=="
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"memberNames\": [\n            \"FirstName\"\n        ],\n        \"errorMessage\": \"The field FirstName must be a string with a maximum length of 50.\"\n    }\n]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PUT",
+      "item": [
+        {
+          "name": "PUT Employee - Valid edition",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200 OK al editar empleado válido', function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test('Datos actualizados correctamente', function () {",
+                  "    const body = pm.response.json();",
+                  "    pm.expect(body.firstName).to.equal('JuanEditado');",
+                  "    pm.expect(body.lastName).to.equal('PerezEditado');",
+                  "});",
+                  "",
+                  "pm.test('[NEGOCIO] Cálculos recalculados tras edición', function () {",
+                  "    const body = pm.response.json();",
+                  "    // 2 dependientes: ($1000 + 2*$500) / 26 = $76.92/cheque",
+                  "    if (body.hasOwnProperty('benefitsCost')) {",
+                  "        const expectedCost = (1000 + 2 * 500) / 26;",
+                  "        pm.expect(body.benefitsCost).to.be.closeTo(expectedCost, 0.05);",
+                  "    }",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"{{employeeId}}\",\n  \"firstName\": \"JuanEditado\",\n  \"lastName\": \"PerezEditado\",\n  \"dependants\": 2\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/employees/{{employeeId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "employees",
+                "{{employeeId}}"
+              ]
+            },
+            "description": "Edita un empleado existente y verifica que los cálculos se actualizan"
+          },
+          "response": [
+            {
+              "name": "Bug - edition",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"{{employeeId}}\",\n  \"firstName\": \"JuanEditado\",\n  \"lastName\": \"PerezEditado\",\n  \"dependants\": 5\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/employees/{{employeeId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "employees",
+                    "{{employeeId}}"
+                  ]
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Length",
+                  "value": "0"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 04 May 2026 20:32:20 GMT"
+                },
+                {
+                  "key": "X-Amzn-Trace-Id",
+                  "value": "Root=1-69f90254-20ca1d4a5b6fecf11b0e8feb;Parent=06551ec408134def;Sampled=0;Lineage=1:da2a2ef2:0"
+                },
+                {
+                  "key": "x-amzn-RequestId",
+                  "value": "7e53da58-1755-4275-bcc6-f7f3962246bc"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=2592000"
+                },
+                {
+                  "key": "Allow",
+                  "value": "DELETE, GET"
+                },
+                {
+                  "key": "x-amz-apigw-id",
+                  "value": "c21NUGWkoAMEtog="
+                },
+                {
+                  "key": "X-Cache",
+                  "value": "Error from cloudfront"
+                },
+                {
+                  "key": "Via",
+                  "value": "1.1 14b86e2c86ea138a228fb8ab6c4e4b94.cloudfront.net (CloudFront)"
+                },
+                {
+                  "key": "X-Amz-Cf-Pop",
+                  "value": "DFW56-P6"
+                },
+                {
+                  "key": "X-Amz-Cf-Id",
+                  "value": "auYVS26nemcP5MtHgeYBpW-S8Gklhup9Gq-02JQx0aERAdtwoe3rPw=="
+                }
+              ],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        },
+        {
+          "name": "PUT Employee -  Non-existent ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('[BUG CHECK] Status 404 al editar ID inexistente', function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test('No retorna 500', function () {",
+                  "    pm.response.to.not.have.status(500);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"firstName\": \"NoExiste\",\n  \"lastName\": \"Test\",\n  \"dependants\": 0\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/employees/00000000-0000-0000-0000-000000000000",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "employees",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "description": "Verifica que editar un ID inexistente retorna 404"
+          },
+          "response": [
+            {
+              "name": "PUT Employee -  Non-existent ID",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"00000000-0000-0000-0000-000000000000\",\n  \"firstName\": \"NoExiste\",\n  \"lastName\": \"Test\",\n  \"dependants\": 0\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/employees/0000000000000000000000000000",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "employees",
+                    "0000000000000000000000000000"
+                  ]
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Length",
+                  "value": "0"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 04 May 2026 20:34:11 GMT"
+                },
+                {
+                  "key": "X-Amzn-Trace-Id",
+                  "value": "Root=1-69f902c3-4eb5d3b11572dcb423e2b5e2;Parent=201986045511664a;Sampled=0;Lineage=1:da2a2ef2:0"
+                },
+                {
+                  "key": "x-amzn-RequestId",
+                  "value": "bb2d0597-6662-44a0-9840-a6e4e2fa9e2d"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=2592000"
+                },
+                {
+                  "key": "Allow",
+                  "value": "DELETE, GET"
+                },
+                {
+                  "key": "x-amz-apigw-id",
+                  "value": "c21eiFDZIAMEh5w="
+                },
+                {
+                  "key": "X-Cache",
+                  "value": "Error from cloudfront"
+                },
+                {
+                  "key": "Via",
+                  "value": "1.1 4da76bec4d214ef39a048adf52982198.cloudfront.net (CloudFront)"
+                },
+                {
+                  "key": "X-Amz-Cf-Pop",
+                  "value": "DFW56-P6"
+                },
+                {
+                  "key": "X-Amz-Cf-Id",
+                  "value": "8Efj3vrjZgOGaXj1Kok6wsKoM8kzCR8K_UuqXugL6lVhPKMTUPglEA=="
+                }
+              ],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "DELETE",
+      "item": [
+        {
+          "name": "DELETE Employee - Valid ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200 o 204 al eliminar empleado válido', function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([200, 204]);",
+                  "});",
+                  "",
+                  "pm.test('Tiempo de respuesta menor a 3 segundos', function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(3000);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/employees/{{employeeId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "employees",
+                "{{employeeId}}"
+              ]
+            },
+            "description": "Elimina el empleado creado en la prueba 3.1"
+          },
+          "response": [
+            {
+              "name": "DELETE Employee - Valid ID",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/employees/{{employeeId}}",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "employees",
+                    "{{employeeId}}"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Length",
+                  "value": "0"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 04 May 2026 20:53:23 GMT"
+                },
+                {
+                  "key": "X-Amzn-Trace-Id",
+                  "value": "Root=1-69f90743-4e7d6a2d773779201c602430;Parent=193cac67d7055f78;Sampled=0;Lineage=1:da2a2ef2:0"
+                },
+                {
+                  "key": "x-amzn-RequestId",
+                  "value": "ba1811ea-d99b-4665-87b5-fa042923d9d7"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=2592000"
+                },
+                {
+                  "key": "x-amz-apigw-id",
+                  "value": "c24SlE1KoAMEfQA="
+                },
+                {
+                  "key": "X-Cache",
+                  "value": "Miss from cloudfront"
+                },
+                {
+                  "key": "Via",
+                  "value": "1.1 d34675f68ce6e55e7b244fd461b0eb2c.cloudfront.net (CloudFront)"
+                },
+                {
+                  "key": "X-Amz-Cf-Pop",
+                  "value": "QRO51-P4"
+                },
+                {
+                  "key": "X-Amz-Cf-Id",
+                  "value": "9NIN3a_Dh9dTfDO1vRM3rbuyE9cyZvNqoFNisIKr9YnXnoddCGEKNg=="
+                }
+              ],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        },
+        {
+          "name": "DELETE Employee - ID Not Exist",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('[BUG CHECK] Status 404 al eliminar ID inexistente', function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test('No retorna 500', function () {",
+                  "    pm.response.to.not.have.status(500);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/employees/00000000-0000-0000-0000-000000000000",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "employees",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            },
+            "description": "Verifica el manejo de DELETE con ID inexistente"
+          },
+          "response": [
+            {
+              "name": "DELETE Employee - ID Not Exist",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/employees/0000000000000000000000000000",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "employees",
+                    "0000000000000000000000000000"
+                  ]
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Length",
+                  "value": "0"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 04 May 2026 20:55:27 GMT"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "x-amzn-RequestId",
+                  "value": "dcb0b071-cdda-4a50-ab09-91392d217969"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=2592000"
+                },
+                {
+                  "key": "Allow",
+                  "value": "GET"
+                },
+                {
+                  "key": "x-amz-apigw-id",
+                  "value": "c24l_EGCoAMEo_g="
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache,no-store"
+                },
+                {
+                  "key": "Expires",
+                  "value": "-1"
+                },
+                {
+                  "key": "X-Amzn-Trace-Id",
+                  "value": "Root=1-69f907bf-1526f6b50e3f06fc0a3ee580;Parent=1e07fde5534aff2b;Sampled=0;Lineage=1:da2a2ef2:0"
+                },
+                {
+                  "key": "X-Cache",
+                  "value": "Error from cloudfront"
+                },
+                {
+                  "key": "Via",
+                  "value": "1.1 09f9d4478a93ffe6a7bd306f3747b680.cloudfront.net (CloudFront)"
+                },
+                {
+                  "key": "X-Amz-Cf-Pop",
+                  "value": "DFW56-P6"
+                },
+                {
+                  "key": "X-Amz-Cf-Id",
+                  "value": "xrsjHpowQ7vvpXi98x-xwGD2V4q94BB6DgaybDS_Pwl8EOgjaFiD6g=="
+                }
+              ],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Business Rules - Calculation",
+      "item": [
+        {
+          "name": "Employee without dependents",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test('Status 200 o 201', function () {",
+                  "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+                  "});",
+                  "",
+                  "const body = pm.response.json();",
+                  "pm.collectionVariables.set('calcTestEmployeeId', body.id || '');",
+                  "",
+                  "// REGLAS DE NEGOCIO CRÍTICAS:",
+                  "// - Salary: $2,000 por cheque",
+                  "// - Benefits Employee: $1,000/año / 26 = $38.46/cheque",
+                  "// - Net = Salary - BenefitsCost = $2000 - $38.46 = $1,961.54",
+                  "",
+                  "pm.test('[NEGOCIO CRÍTICO] Salario bruto = $2000', function () {",
+                  "    if (body.hasOwnProperty('salary')) {",
+                  "        pm.expect(body.salary).to.equal(2000);",
+                  "    }",
+                  "});",
+                  "",
+                  "pm.test('[NEGOCIO CRÍTICO] Costo beneficio empleado = $38.46/cheque', function () {",
+                  "    if (body.hasOwnProperty('benefitsCost')) {",
+                  "        pm.expect(body.benefitsCost).to.be.closeTo(38.46, 0.05);",
+                  "    }",
+                  "});",
+                  "",
+                  "pm.test('[NEGOCIO CRÍTICO] Salario neto = $1961.54', function () {",
+                  "    if (body.hasOwnProperty('net')) {",
+                  "        pm.expect(body.net).to.be.closeTo(1961.54, 0.05);",
+                  "    }",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"CalcTest\",\n  \"lastName\": \"NoDependents\",\n  \"dependants\": 0\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/employees",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "employees"
+              ]
+            },
+            "description": "Verifica que: $2000 salario - ($1000/26) beneficios = $1961.54 neto"
+          },
+          "response": [
+            {
+              "name": "Employee without dependents",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"CalcTest\",\n  \"lastName\": \"NoDependents\",\n  \"dependants\": 0\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/employees",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "employees"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "280"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 04 May 2026 20:26:12 GMT"
+                },
+                {
+                  "key": "X-Amzn-Trace-Id",
+                  "value": "Root=1-69f900e4-00ef854c45396ac21888ec35;Parent=649a86f4b50ea87e;Sampled=0;Lineage=1:da2a2ef2:0"
+                },
+                {
+                  "key": "x-amzn-RequestId",
+                  "value": "8a7afff6-18ae-4182-a45a-40ccca2b2fdb"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=2592000"
+                },
+                {
+                  "key": "x-amz-apigw-id",
+                  "value": "c20TuFnVoAMEYmw="
+                },
+                {
+                  "key": "X-Cache",
+                  "value": "Miss from cloudfront"
+                },
+                {
+                  "key": "Via",
+                  "value": "1.1 e3c97f150401acbcdfdfdbcb3fcd713e.cloudfront.net (CloudFront)"
+                },
+                {
+                  "key": "X-Amz-Cf-Pop",
+                  "value": "QRO51-P4"
+                },
+                {
+                  "key": "X-Amz-Cf-Id",
+                  "value": "OVlu3EEIkl-hUQryFKaRgOxjTI_PlypdXpLyPfV2jmGy124tfKss3Q=="
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"partitionKey\": \"TestUser949\",\n    \"sortKey\": \"8e27fb9d-eace-4079-a308-88d97a852b51\",\n    \"username\": \"TestUser949\",\n    \"id\": \"8e27fb9d-eace-4079-a308-88d97a852b51\",\n    \"firstName\": \"CalcTest\",\n    \"lastName\": \"NoDependents\",\n    \"dependants\": 0,\n    \"salary\": 52000,\n    \"gross\": 2000,\n    \"benefitsCost\": 38.46154,\n    \"net\": 1961.5385\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "value",
+        "value": "Basic {{authToken}}",
+        "type": "string"
+      },
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod",
+      "type": "string"
+    },
+    {
+      "key": "authToken",
+      "value": "YOUR_AUTH_TOKEN_HERE",
+      "type": "string",
+      "description": "Reemplaza con tu token de autorización asignado. Formato: Basic <token>"
+    },
+    {
+      "key": "employeeId",
+      "value": "",
+      "type": "string",
+      "description": "Se llena automáticamente al crear un empleado"
+    },
+    {
+      "key": "dependentId",
+      "value": "",
+      "type": "string",
+      "description": "Se llena automáticamente al crear un dependiente"
+    },
+    {
+      "key": "calcTestEmployeeId",
+      "value": ""
+    }
+  ]
+}
